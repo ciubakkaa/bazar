@@ -11,7 +11,18 @@
       "Bash(npx:*)",
       "Bash(npm run:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "mcp__claude_ai_Supabase__list_organizations",
+      "mcp__claude_ai_Supabase__get_cost",
+      "mcp__claude_ai_Supabase__confirm_cost",
+      "mcp__claude_ai_Supabase__create_project",
+      "mcp__claude_ai_Supabase__get_project_url",
+      "mcp__claude_ai_Supabase__get_publishable_keys",
+      "mcp__claude_ai_Supabase__list_tables",
+      "Bash(ls:*)",
+      "Bash(npm test:*)",
+      "Bash(git commit:*)",
+      "mcp__claude_ai_Supabase__deploy_edge_function"
     ]
   },
   "enabledPlugins": {}
