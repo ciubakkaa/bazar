@@ -1,0 +1,101 @@
+<h2>Design Direction for Bazar</h2>
+<p class="subtitle">Which visual personality fits "bazarul studenților"?</p>
+
+<div class="cards">
+  <!-- Option A: Current Mockup Style -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; background: #FAFAF7; min-height: 280px;">
+      <!-- Mini mockup of current style -->
+      <div style="font-family: 'Space Grotesk', system-ui; margin-bottom: 16px;">
+        <span style="font-weight: 700; font-size: 22px; color: #1A1A2E;">ba</span><span style="display: inline-block; background: #FFD600; padding: 1px 6px; border-radius: 5px; transform: rotate(-2deg); font-weight: 700; font-size: 22px; color: #1A1A2E;">zar</span>
+      </div>
+      <div style="background: white; border-radius: 16px; padding: 16px; border: 2px solid #F0EFE9; margin-bottom: 12px;">
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 22px; height: 22px; border-radius: 7px; background: #22C55E; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; flex-shrink: 0;">✓</div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px; color: #1A1A2E;">Confirmă locul la facultate</div>
+            <span style="font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; background: #DBEAFE; color: #1E40AF;">Acte</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: white; border-radius: 16px; padding: 16px; border: 2px solid #F0EFE9;">
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 22px; height: 22px; border-radius: 7px; border: 2.5px solid #D1D0C9; flex-shrink: 0;"></div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px; color: #1A1A2E;">Fă-ți adeverința medicală</div>
+            <span style="font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; background: #DCFCE7; color: #166534;">Sănătate</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 16px; display: flex; gap: 6px;">
+        <span style="font-size: 24px;">📋</span>
+        <span style="font-size: 24px;">🏠</span>
+        <span style="font-size: 24px;">🤝</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Warm & Playful (Current Mockup)</h3>
+      <p>Off-white background, yellow accents, emoji stickers, Space Grotesk headings, soft rounded cards. Feels handmade, approachable, like a student made it. This is what your mockups already look like.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Bold & Punchy -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; background: #0A0A0A; min-height: 280px;">
+      <!-- Dark bold style -->
+      <div style="margin-bottom: 16px;">
+        <span style="font-weight: 800; font-size: 22px; color: white; font-family: system-ui;">ba</span><span style="display: inline-block; background: #FACC15; padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 22px; color: #0A0A0A; font-family: system-ui;">zar</span>
+      </div>
+      <div style="background: #1A1A1A; border-radius: 12px; padding: 16px; border: 1px solid #2A2A2A; margin-bottom: 10px;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="width: 22px; height: 22px; border-radius: 6px; background: #FACC15; display: flex; align-items: center; justify-content: center; color: #0A0A0A; font-size: 12px; font-weight: 800; flex-shrink: 0;">✓</div>
+          <div style="font-weight: 600; font-size: 14px; color: white;">Confirmă locul la facultate</div>
+        </div>
+      </div>
+      <div style="background: #1A1A1A; border-radius: 12px; padding: 16px; border: 1px solid #2A2A2A;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="width: 22px; height: 22px; border-radius: 6px; border: 2px solid #444; flex-shrink: 0;"></div>
+          <div style="font-weight: 600; font-size: 14px; color: #999;">Fă-ți adeverința medicală</div>
+        </div>
+      </div>
+      <div style="margin-top: 16px; display: flex; gap: 8px;">
+        <span style="background: #FACC15; color: #0A0A0A; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">ACTE</span>
+        <span style="background: #7C3AED; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">CAZARE</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Dark & Bold</h3>
+      <p>Dark mode, high contrast, yellow as the primary accent. Sharp, confident. Looks more like a fintech or gaming app. Appeals to the "cool tool" crowd but might feel less friendly.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Gradient & Glassmorphism -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 280px;">
+      <!-- Glassmorphism style -->
+      <div style="margin-bottom: 16px;">
+        <span style="font-weight: 700; font-size: 22px; color: white; font-family: system-ui;">ba</span><span style="display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); padding: 1px 6px; border-radius: 5px; font-weight: 700; font-size: 22px; color: white; font-family: system-ui;">zar</span>
+      </div>
+      <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 14px; padding: 16px; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 10px;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; flex-shrink: 0;">✓</div>
+          <div style="font-weight: 600; font-size: 14px; color: white;">Confirmă locul la facultate</div>
+        </div>
+      </div>
+      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 14px; padding: 16px; border: 1px solid rgba(255,255,255,0.15);">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="width: 22px; height: 22px; border-radius: 7px; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+          <div style="font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.7);">Fă-ți adeverința medicală</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Gradient & Glass</h3>
+      <p>Purple gradients, frosted glass cards, dreamy vibes. Trendy and Instagram-worthy but can feel generic — this is THE "AI-generated" look right now. Every student app looks like this.</p>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 24px; padding: 16px; background: rgba(255,214,0,0.1); border-radius: 12px; border: 1px solid rgba(255,214,0,0.3);">
+  <p style="font-size: 14px; color: #666; margin: 0;"><strong>My take:</strong> Option A already has real personality — it feels like something a student actually built, not a template. The warm tones + Space Grotesk + emoji stickers give it character without trying too hard. B is cool but maybe too serious for a student community app. C is what you specifically said you don't want (the generic AI look).</p>
+</div>

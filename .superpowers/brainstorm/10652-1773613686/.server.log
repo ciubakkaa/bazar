@@ -1,0 +1,5 @@
+{"type":"server-started","port":59621,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:59621","screen_dir":"/Users/vladciobotarasu/projects/personal/bazar/.superpowers/brainstorm/10652-1773613686"}
+{"type":"screen-added","file":"/Users/vladciobotarasu/projects/personal/bazar/.superpowers/brainstorm/10652-1773613686/waiting.html"}
+{"type":"screen-added","file":"/Users/vladciobotarasu/projects/personal/bazar/.superpowers/brainstorm/10652-1773613686/design-direction.html"}
+{"type":"screen-added","file":"/Users/vladciobotarasu/projects/personal/bazar/.superpowers/brainstorm/10652-1773613686/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

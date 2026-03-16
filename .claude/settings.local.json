@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//private/tmp/**)",
+      "Bash(rm -rf bazar-scaffold)",
+      "Bash(npx sv:*)",
+      "Bash(cd:*)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)",
+      "Bash(npx:*)",
+      "Bash(npm run:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "enabledPlugins": {}
+}
