@@ -45,7 +45,7 @@
   }
 </script>
 
-<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-8">
+<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-5 md:p-8">
   <h1 class="font-heading font-bold text-2xl mb-1 text-center">Creeaza cont</h1>
   <p class="text-sm text-bazar-gray-500 text-center mb-6">Incepe aventura de boboc.</p>
 

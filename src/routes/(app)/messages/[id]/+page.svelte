@@ -123,7 +123,7 @@
 	}
 </script>
 
-<div class="flex flex-col h-[calc(100vh-64px)] md:h-screen max-w-3xl mx-auto">
+<div class="flex flex-col h-[calc(100dvh-64px-80px)] md:h-screen max-w-3xl mx-auto">
 	<!-- Header -->
 	<div
 		class="flex items-center gap-3 px-4 py-3 bg-white border-b border-bazar-gray-100 shrink-0"
@@ -175,7 +175,7 @@
 	</div>
 
 	<!-- Input area -->
-	<div class="shrink-0 bg-white border-t border-bazar-gray-100 px-4 py-3">
+	<div class="shrink-0 bg-white border-t border-bazar-gray-100 px-4 py-3 sticky bottom-0 md:relative">
 		{#if data.isVerified}
 			<div class="flex items-end gap-2">
 				<textarea

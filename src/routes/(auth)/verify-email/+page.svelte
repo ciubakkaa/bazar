@@ -62,7 +62,7 @@
   }
 </script>
 
-<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-8 text-center">
+<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-5 md:p-8 text-center">
   <div class="text-4xl mb-4">📧</div>
   <h1 class="font-heading font-bold text-2xl mb-2">Verifica-ti emailul</h1>
   <p class="text-sm text-bazar-gray-500 mb-6">

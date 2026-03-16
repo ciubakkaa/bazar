@@ -78,7 +78,7 @@
 	></div>
 
 	<!-- Panel -->
-	<div class="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-50 rounded-l-bazar-lg shadow-xl overflow-y-auto">
+	<div class="fixed top-0 right-0 bottom-0 w-full md:max-w-sm bg-white z-50 md:rounded-l-bazar-lg shadow-xl overflow-y-auto">
 		<div class="p-6">
 			<!-- Header -->
 			<div class="flex items-center justify-between mb-6">

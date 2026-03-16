@@ -119,13 +119,13 @@
 			{#if person.bio}
 				<div class="mb-6">
 					<h2 class="text-sm font-semibold text-bazar-dark mb-2">Despre</h2>
-					<p class="text-sm text-bazar-gray-500 leading-relaxed">{person.bio}</p>
+					<p class="text-sm text-bazar-gray-500 leading-relaxed break-words">{person.bio}</p>
 				</div>
 			{/if}
 
 			<!-- Compatibility breakdown -->
 			{#if dimensionBreakdown.length > 0}
-				<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-5 mb-6">
+				<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-4 md:p-5 mb-6">
 					<h2 class="text-sm font-semibold text-bazar-dark mb-4">Compatibilitate per dimensiune</h2>
 					<div class="space-y-4">
 						{#each dimensionBreakdown as dim}
@@ -171,9 +171,9 @@
 			<!-- Roommate preferences -->
 			{#if person.roommate_preferences}
 				{@const prefs = person.roommate_preferences}
-				<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-5 mb-6">
+				<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-4 md:p-5 mb-6">
 					<h2 class="text-sm font-semibold text-bazar-dark mb-3">Preferințe coleg de cameră</h2>
-					<div class="grid grid-cols-2 gap-3 text-sm">
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 						{#if prefs.budget_min || prefs.budget_max}
 							<div>
 								<span class="text-bazar-gray-500">Buget:</span>

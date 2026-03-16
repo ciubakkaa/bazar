@@ -89,13 +89,13 @@
 		</a>
 
 		<!-- Question -->
-		<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-5 mb-6">
-			<h1 class="text-xl font-heading font-bold text-bazar-dark mb-3">
+		<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-4 md:p-5 mb-6">
+			<h1 class="text-xl font-heading font-bold text-bazar-dark mb-3 break-words">
 				{#if q.is_pinned}<span class="mr-1">📌</span>{/if}{q.title}
 			</h1>
 
 			{#if q.body}
-				<p class="text-[15px] text-bazar-dark leading-relaxed mb-4">{q.body}</p>
+				<p class="text-[15px] text-bazar-dark leading-relaxed mb-4 break-words">{q.body}</p>
 			{/if}
 
 			<!-- Author info -->
@@ -144,7 +144,7 @@
 						</div>
 
 						<!-- Body -->
-						<p class="text-[15px] text-bazar-dark leading-relaxed mb-3">{answer.body}</p>
+						<p class="text-[15px] text-bazar-dark leading-relaxed mb-3 break-words">{answer.body}</p>
 
 						<!-- Upvote -->
 						<button

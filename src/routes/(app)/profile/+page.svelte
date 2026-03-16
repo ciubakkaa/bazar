@@ -130,7 +130,7 @@
 			{initials}
 		</div>
 		<div>
-			<h1 class="font-heading font-bold text-[28px] text-bazar-dark leading-tight">
+			<h1 class="font-heading font-bold text-xl md:text-[28px] text-bazar-dark leading-tight break-words">
 				{profile?.full_name ?? 'Profil'}
 			</h1>
 			{#if facultyLine}
@@ -155,7 +155,7 @@
 
 	<!-- University verification section -->
 	{#if profile?.is_verified}
-		<div class="bg-emerald-50 border-2 border-emerald-100 rounded-bazar-lg p-4 flex items-center gap-3">
+		<div class="bg-emerald-50 border-2 border-emerald-100 rounded-bazar-lg p-3 md:p-4 flex items-center gap-3">
 			<svg class="w-5 h-5 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
 				<path
 					fill-rule="evenodd"
@@ -168,7 +168,7 @@
 			</p>
 		</div>
 	{:else}
-		<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6">
+		<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6">
 			<h2 class="font-heading font-bold text-lg text-bazar-dark mb-2">
 				Verificare universitara
 			</h2>
@@ -246,7 +246,7 @@
 	{/if}
 
 	<!-- Edit profile section -->
-	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6">
+	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6">
 		<h2 class="font-heading font-bold text-lg text-bazar-dark mb-4">Editeaza profilul</h2>
 
 		{#if form?.error}
@@ -305,7 +305,7 @@
 	</div>
 
 	<!-- Quiz section -->
-	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6">
+	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6">
 		<h2 class="font-heading font-bold text-lg text-bazar-dark mb-2">Quiz compatibilitate</h2>
 		{#if data.quizAnswers}
 			<div class="flex items-center justify-between">
@@ -340,7 +340,7 @@
 	</div>
 
 	<!-- Roommate preferences section -->
-	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6">
+	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6">
 		<h2 class="font-heading font-bold text-lg text-bazar-dark mb-4">Preferinte coleg de camera</h2>
 
 		<form method="POST" action="?/updateRoommatePrefs" use:enhance class="space-y-5">
@@ -416,7 +416,7 @@
 			<!-- Gender preference -->
 			<div>
 				<span class="block text-sm font-medium text-bazar-dark mb-2">Preferinta gen</span>
-				<div class="flex gap-3">
+				<div class="flex flex-wrap gap-2 md:gap-3">
 					{#each [
 						{ value: 'any', label: 'Oricine' },
 						{ value: 'male', label: 'Masculin' },
@@ -487,7 +487,7 @@
 	</div>
 
 	<!-- Deactivate section -->
-	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6">
+	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6">
 		{#if !showDeactivateConfirm}
 			<button
 				type="button"

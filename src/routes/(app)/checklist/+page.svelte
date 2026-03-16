@@ -81,7 +81,7 @@
 <div class="px-5 py-6 max-w-2xl mx-auto">
 	<!-- Header -->
 	<div class="mb-6">
-		<h1 class="font-heading font-bold text-[28px] text-bazar-dark">Checklist-ul tău</h1>
+		<h1 class="font-heading font-bold text-2xl md:text-[28px] text-bazar-dark">Checklist-ul tău</h1>
 		{#if data.profile?.faculty}
 			<p class="text-sm text-bazar-gray-500 mt-1">
 				{data.profile.faculty.university?.name ?? ''} &middot; {data.profile.faculty.name ?? ''}
@@ -90,7 +90,7 @@
 	</div>
 
 	<!-- Progress card -->
-	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-6 mb-6">
+	<div class="bg-white rounded-bazar-lg border-2 border-bazar-gray-100 p-4 md:p-6 mb-6">
 		<div class="flex items-center justify-between mb-3">
 			<span class="text-sm font-semibold text-bazar-dark">Progres</span>
 			<span class="text-sm font-medium text-bazar-gray-500">{completedCount} din {totalCount}</span>

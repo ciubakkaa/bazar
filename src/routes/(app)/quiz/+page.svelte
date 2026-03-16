@@ -100,10 +100,10 @@
 							{@const value = q.min + i}
 							<button
 								onclick={() => selectSliderValue(value)}
-								class="relative flex flex-col items-center gap-3 group"
+								class="relative flex flex-col items-center gap-2 md:gap-3 group"
 							>
 								<div
-									class="w-10 h-10 rounded-full border-2 transition-all duration-200 flex items-center justify-center text-sm font-semibold
+									class="w-9 h-9 md:w-10 md:h-10 rounded-full border-2 transition-all duration-200 flex items-center justify-center text-sm font-semibold
 										{currentValue === value
 											? 'bg-bazar-yellow border-bazar-yellow text-bazar-dark scale-110'
 											: 'bg-white border-bazar-gray-200 text-bazar-gray-400 hover:border-bazar-gray-300 hover:scale-105'}"
@@ -111,7 +111,7 @@
 									{value}
 								</div>
 								<span
-									class="text-xs transition-colors duration-200 max-w-[72px] text-center leading-tight
+									class="text-[10px] md:text-xs transition-colors duration-200 max-w-[56px] md:max-w-[72px] text-center leading-tight
 										{currentValue === value
 											? 'text-bazar-dark font-semibold'
 											: 'text-bazar-gray-500'}"

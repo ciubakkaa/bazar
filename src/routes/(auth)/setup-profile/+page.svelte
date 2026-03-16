@@ -51,7 +51,7 @@
   {/each}
 </div>
 
-<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-8">
+<div class="bg-white rounded-bazar-lg border border-bazar-gray-100 p-5 md:p-8">
   {#if form?.error}
     <div class="bg-red-50 text-red-700 text-sm rounded-bazar-sm px-4 py-3 mb-4">
       {form.error}

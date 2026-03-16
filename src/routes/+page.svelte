@@ -40,13 +40,13 @@
     </div>
   </div>
 
-  <div class="relative order-first md:order-last">
-    <span class="absolute -top-2.5 -left-5 text-[32px] -rotate-[15deg] drop-shadow-md z-10">📋</span>
-    <span class="absolute top-10 -right-7 text-[32px] rotate-[10deg] drop-shadow-md z-10">🏠</span>
-    <span class="absolute bottom-10 -left-7 text-[32px] rotate-[8deg] drop-shadow-md z-10">🤝</span>
+  <div class="relative order-first md:order-last overflow-hidden md:overflow-visible">
+    <span class="absolute -top-2.5 left-0 md:-left-5 text-[28px] md:text-[32px] -rotate-[15deg] drop-shadow-md z-10">📋</span>
+    <span class="absolute top-10 right-0 md:-right-7 text-[28px] md:text-[32px] rotate-[10deg] drop-shadow-md z-10">🏠</span>
+    <span class="absolute bottom-10 left-0 md:-left-7 text-[28px] md:text-[32px] rotate-[8deg] drop-shadow-md z-10">🤝</span>
 
-    <div class="bg-white rounded-[32px] p-4 shadow-[0_4px_6px_rgba(0,0,0,0.04),0_24px_48px_rgba(0,0,0,0.08)] max-w-[340px] md:max-w-[340px] max-w-[280px] mx-auto rotate-2 md:rotate-2 border-[3px] border-bazar-gray-100">
-      <div class="bg-bazar-offwhite rounded-[20px] p-5 min-h-[460px]">
+    <div class="bg-white rounded-[32px] p-4 shadow-[0_4px_6px_rgba(0,0,0,0.04),0_24px_48px_rgba(0,0,0,0.08)] max-w-[280px] md:max-w-[340px] mx-auto rotate-2 md:rotate-2 border-[3px] border-bazar-gray-100">
+      <div class="bg-bazar-offwhite rounded-[20px] p-4 md:p-5 min-h-[380px] md:min-h-[460px]">
         <div class="font-heading font-bold text-xl mb-1">Checklist-ul tau</div>
         <div class="text-[13px] text-bazar-gray-500 mb-4">3 din 10 completate</div>
         <div class="bg-bazar-gray-100 rounded-full h-2 mb-5 overflow-hidden">
@@ -135,7 +135,7 @@
 </section>
 
 <!-- Bottom CTA -->
-<section class="relative overflow-hidden bg-bazar-dark rounded-[28px] mx-5 md:mx-8 max-w-[1136px] lg:mx-auto mt-20 mb-16 px-6 md:px-8 py-12 text-center">
+<section class="relative overflow-hidden bg-bazar-dark rounded-[20px] md:rounded-[28px] mx-4 md:mx-8 max-w-[1136px] lg:mx-auto mt-12 md:mt-20 mb-12 md:mb-16 px-5 md:px-8 py-10 md:py-12 text-center">
   <div class="absolute -top-1/2 -right-[20%] w-[300px] h-[300px] bg-bazar-purple opacity-15 rounded-full blur-[60px]"></div>
   <div class="absolute -bottom-[30%] -left-[10%] w-[250px] h-[250px] bg-bazar-yellow opacity-12 rounded-full blur-[60px]"></div>
   <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-3 relative z-10">Gata cu panica de boboc.</h2>
