@@ -83,14 +83,14 @@
 			<!-- Header -->
 			<div class="flex items-center justify-between mb-6">
 				<h2 class="text-lg font-heading font-bold text-bazar-dark">Filtre</h2>
-				<button onclick={onClose} class="text-bazar-gray-500 hover:text-bazar-dark text-xl leading-none">
+				<button onclick={onClose} aria-label="Inchide filtre" class="text-bazar-gray-500 hover:text-bazar-dark text-xl leading-none">
 					&times;
 				</button>
 			</div>
 
 			<!-- Budget -->
 			<div class="mb-6">
-				<label class="block text-sm font-semibold text-bazar-dark mb-2">Buget (EUR/lună)</label>
+				<span class="block text-sm font-semibold text-bazar-dark mb-2">Buget (EUR/lună)</span>
 				<div class="flex items-center gap-2">
 					<input
 						type="number"
@@ -110,7 +110,7 @@
 
 			<!-- Sectors -->
 			<div class="mb-6">
-				<label class="block text-sm font-semibold text-bazar-dark mb-2">Zone</label>
+				<span class="block text-sm font-semibold text-bazar-dark mb-2">Zone</span>
 				<div class="flex flex-wrap gap-2">
 					{#each BUCHAREST_SECTORS as sector}
 						<button
@@ -128,8 +128,9 @@
 
 			<!-- Move-in month -->
 			<div class="mb-6">
-				<label class="block text-sm font-semibold text-bazar-dark mb-2">Luna mutării</label>
+				<label for="filter-move-in" class="block text-sm font-semibold text-bazar-dark mb-2">Luna mutării</label>
 				<select
+					id="filter-move-in"
 					bind:value={moveInMonth}
 					class="w-full px-3 py-2 border border-bazar-gray-200 rounded-bazar-sm text-sm focus:outline-none focus:ring-2 focus:ring-bazar-yellow/50 focus:border-bazar-yellow bg-white"
 				>
@@ -141,7 +142,7 @@
 
 			<!-- Gender -->
 			<div class="mb-6">
-				<label class="block text-sm font-semibold text-bazar-dark mb-2">Gen preferat</label>
+				<span class="block text-sm font-semibold text-bazar-dark mb-2">Gen preferat</span>
 				<div class="flex flex-col gap-2">
 					{#each [{ value: '', label: 'Oricine' }, { value: 'masculin', label: 'Masculin' }, { value: 'feminin', label: 'Feminin' }] as option}
 						<label class="flex items-center gap-2 cursor-pointer">
@@ -168,6 +169,7 @@
 						class="relative w-11 h-6 rounded-full transition-colors {hasApartment ? 'bg-bazar-dark' : 'bg-bazar-gray-200'}"
 						role="switch"
 						aria-checked={hasApartment}
+						aria-label="Are apartament"
 					>
 						<span
 							class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform

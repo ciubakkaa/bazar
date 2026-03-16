@@ -7,8 +7,8 @@
 	let { data, form } = $props();
 
 	let showDeactivateConfirm = $state(false);
-	let hasApartment = $state(data.roommatePrefs?.has_apartment ?? false);
-	let selectedSectors: string[] = $state(data.roommatePrefs?.preferred_sectors ?? []);
+	let hasApartment = $state(false);
+	let selectedSectors: string[] = $state([]);
 
 	// Verification state
 	let uniEmail = $state('');
@@ -346,7 +346,7 @@
 		<form method="POST" action="?/updateRoommatePrefs" use:enhance class="space-y-5">
 			<!-- Budget range -->
 			<div>
-				<label class="block text-sm font-medium text-bazar-dark mb-2">Buget (RON/luna)</label>
+				<span class="block text-sm font-medium text-bazar-dark mb-2">Buget (RON/luna)</span>
 				<div class="flex items-center gap-3">
 					<input
 						name="budget_min"
@@ -370,7 +370,7 @@
 
 			<!-- Preferred sectors -->
 			<div>
-				<label class="block text-sm font-medium text-bazar-dark mb-2">Zone preferate</label>
+				<span class="block text-sm font-medium text-bazar-dark mb-2">Zone preferate</span>
 				<div class="flex flex-wrap gap-2">
 					{#each BUCHAREST_SECTORS as sector}
 						<button
@@ -415,7 +415,7 @@
 
 			<!-- Gender preference -->
 			<div>
-				<label class="block text-sm font-medium text-bazar-dark mb-2">Preferinta gen</label>
+				<span class="block text-sm font-medium text-bazar-dark mb-2">Preferinta gen</span>
 				<div class="flex gap-3">
 					{#each [
 						{ value: 'any', label: 'Oricine' },

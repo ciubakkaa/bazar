@@ -5,8 +5,8 @@
 
 	let submitting = $state(false);
 
-	const facultyId = data.profile?.faculty_id;
-	const facultyName = data.profile?.faculty?.short_name;
+	const facultyId = $derived(data.profile?.faculty_id);
+	const facultyName = $derived(data.profile?.faculty?.short_name);
 </script>
 
 <div class="px-5 py-6 max-w-2xl mx-auto">

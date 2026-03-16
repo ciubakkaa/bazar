@@ -5,10 +5,10 @@
 
 	let { data } = $props();
 
-	let items: ChecklistItemWithProgress[] = $state(data.items);
+	let items: ChecklistItemWithProgress[] = $state([]);
 	let activeCategory: string | null = $state(null);
 
-	// Sync when server data changes (e.g. navigation)
+	// Sync when server data changes (e.g. navigation, initial load)
 	$effect(() => {
 		items = data.items;
 	});

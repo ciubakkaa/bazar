@@ -5,13 +5,19 @@
 	let { data, form } = $props();
 
 	const supabase = createClient();
-	const userId = data.user?.id;
+	const userId = $derived(data.user?.id);
 	const isVerified = $derived(!!data.profile?.is_verified);
 
-	let votedIds = $state(new Set(data.votedAnswerIds ?? []));
-	let answerUpvotes = $state<Record<string, number>>(
-		Object.fromEntries((data.answers ?? []).map((a: any) => [a.id, a.upvotes ?? 0]))
-	);
+	let votedIds = $state(new Set<string>());
+	let answerUpvotes = $state<Record<string, number>>({});
+
+	$effect(() => {
+		votedIds = new Set(data.votedAnswerIds ?? []);
+	});
+
+	$effect(() => {
+		answerUpvotes = Object.fromEntries((data.answers ?? []).map((a: any) => [a.id, a.upvotes ?? 0]));
+	});
 	let submitting = $state(false);
 	let answerText = $state('');
 

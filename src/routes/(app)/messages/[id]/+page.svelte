@@ -1,16 +1,20 @@
 <script lang="ts">
-	import { onDestroy, tick } from 'svelte';
+	import { tick } from 'svelte';
 	import { createClient } from '$lib/supabase';
 	import MessageBubble from '$lib/components/MessageBubble.svelte';
 
 	let { data } = $props();
 
 	const supabase = createClient();
-	const userId = data.user?.id;
-	const conversationId = data.conversation?.id;
-	const isGroupChat = data.conversation?.type === 'faculty';
+	const userId = $derived(data.user?.id);
+	const conversationId = $derived(data.conversation?.id);
+	const isGroupChat = $derived(data.conversation?.type === 'faculty');
 
-	let messages = $state([...(data.messages ?? [])]);
+	let messages = $state<any[]>([]);
+
+	$effect(() => {
+		messages = [...(data.messages ?? [])];
+	});
 	let messageText = $state('');
 	let messagesContainer: HTMLDivElement | undefined = $state();
 	let sending = $state(false);
@@ -47,33 +51,38 @@
 	});
 
 	// Realtime subscription
-	const channel = conversationId
-		? supabase
-				.channel(`chat-${conversationId}`)
-				.on(
-					'postgres_changes',
-					{
-						event: 'INSERT',
-						schema: 'public',
-						table: 'messages',
-						filter: `conversation_id=eq.${conversationId}`
-					},
-					(payload) => {
-						// Avoid duplicating messages we just sent
-						const newMsg = payload.new as any;
-						if (!messages.find((m: any) => m.id === newMsg.id)) {
-							messages = [...messages, newMsg];
-							scrollToBottom();
-						}
-					}
-				)
-				.subscribe()
-		: null;
+	let channel: ReturnType<typeof supabase.channel> | null = null;
 
-	onDestroy(() => {
-		if (channel) {
-			supabase.removeChannel(channel);
-		}
+	$effect(() => {
+		const convId = conversationId;
+		if (!convId) return;
+
+		channel = supabase
+			.channel(`chat-${convId}`)
+			.on(
+				'postgres_changes',
+				{
+					event: 'INSERT',
+					schema: 'public',
+					table: 'messages',
+					filter: `conversation_id=eq.${convId}`
+				},
+				(payload) => {
+					const newMsg = payload.new as any;
+					if (!messages.find((m: any) => m.id === newMsg.id)) {
+						messages = [...messages, newMsg];
+						scrollToBottom();
+					}
+				}
+			)
+			.subscribe();
+
+		return () => {
+			if (channel) {
+				supabase.removeChannel(channel);
+				channel = null;
+			}
+		};
 	});
 
 	async function sendMessage() {
@@ -121,6 +130,7 @@
 	>
 		<a
 			href="/messages"
+			aria-label="Inapoi la mesaje"
 			class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-bazar-gray-100 transition-colors"
 		>
 			<svg class="w-5 h-5 text-bazar-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,6 +188,7 @@
 				<button
 					onclick={sendMessage}
 					disabled={!messageText.trim() || sending}
+					aria-label="Trimite mesaj"
 					class="w-10 h-10 flex items-center justify-center rounded-full bg-bazar-dark text-white shrink-0 hover:bg-bazar-dark/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
 				>
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
