@@ -2,6 +2,9 @@ name = "bazar"
 compatibility_date = "2026-03-16"
 pages_build_output_dir = ".svelte-kit/cloudflare"
 
-[vars]
+# Environment variables are set in the CF Pages dashboard.
+# [vars] makes them available at runtime (SSR).
+# [build.environment] makes them available at build time (for $env/static/public).
+[build.environment]
 PUBLIC_SUPABASE_URL = "https://ivnpjobhxzpauayyyarr.supabase.co"
 PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2bnBqb2JoeHpwYXVheXl5YXJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MTA4NjksImV4cCI6MjA4OTE4Njg2OX0.abXm932IpLqkBybqyHQpHOopGjBRCufKUgtuv8sQ8mA"
