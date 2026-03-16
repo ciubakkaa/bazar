@@ -1,13 +1,80 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { BUCHAREST_SECTORS } from '$lib/constants';
+	import { createClient } from '$lib/supabase';
 
 	let { data, form } = $props();
 
 	let showDeactivateConfirm = $state(false);
 	let hasApartment = $state(data.roommatePrefs?.has_apartment ?? false);
 	let selectedSectors: string[] = $state(data.roommatePrefs?.preferred_sectors ?? []);
+
+	// Verification state
+	let uniEmail = $state('');
+	let verificationCode = $state('');
+	let verificationStep = $state<'email' | 'code'>('email');
+	let verificationLoading = $state(false);
+	let verificationError = $state('');
+	let verificationSuccess = $state('');
+
+	const supabase = createClient();
+
+	async function sendCode() {
+		verificationError = '';
+		verificationSuccess = '';
+		verificationLoading = true;
+
+		try {
+			const { data: result, error } = await supabase.functions.invoke(
+				'verify-university-email',
+				{ body: { action: 'send-code', email: uniEmail } }
+			);
+
+			if (error) {
+				verificationError = 'Eroare de conexiune. Incearca din nou.';
+				return;
+			}
+
+			if (result?.error) {
+				verificationError = result.error;
+				return;
+			}
+
+			verificationStep = 'code';
+			verificationSuccess = 'Codul a fost trimis la ' + uniEmail;
+		} finally {
+			verificationLoading = false;
+		}
+	}
+
+	async function verifyCode() {
+		verificationError = '';
+		verificationSuccess = '';
+		verificationLoading = true;
+
+		try {
+			const { data: result, error } = await supabase.functions.invoke(
+				'verify-university-email',
+				{ body: { action: 'verify-code', code: verificationCode } }
+			);
+
+			if (error) {
+				verificationError = 'Eroare de conexiune. Incearca din nou.';
+				return;
+			}
+
+			if (result?.error) {
+				verificationError = result.error;
+				return;
+			}
+
+			verificationSuccess = 'Email verificat cu succes!';
+			await invalidateAll();
+		} finally {
+			verificationLoading = false;
+		}
+	}
 
 	// Sync hasApartment when data changes
 	$effect(() => {
@@ -108,23 +175,73 @@
 			<p class="text-sm text-bazar-gray-500 mb-4">
 				Verifica-te cu emailul universitar pentru a aparea in listari si a trimite mesaje.
 			</p>
-			<div class="flex gap-2">
-				<input
-					type="email"
-					placeholder="nume@student.univ.ro"
-					class="flex-1 px-3 py-2.5 text-sm border-2 border-bazar-gray-200 rounded-bazar-sm focus:outline-none focus:border-bazar-purple transition-colors"
-					disabled
-				/>
+
+			{#if verificationError}
+				<div class="mb-3 px-3 py-2 bg-red-50 border border-red-200 rounded-bazar-sm text-sm text-red-700">
+					{verificationError}
+				</div>
+			{/if}
+
+			{#if verificationSuccess}
+				<div class="mb-3 px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-bazar-sm text-sm text-emerald-700">
+					{verificationSuccess}
+				</div>
+			{/if}
+
+			{#if verificationStep === 'email'}
+				<div class="flex gap-2">
+					<input
+						type="email"
+						placeholder="nume@student.univ.ro"
+						bind:value={uniEmail}
+						class="flex-1 px-3 py-2.5 text-sm border-2 border-bazar-gray-200 rounded-bazar-sm focus:outline-none focus:border-bazar-purple transition-colors"
+						disabled={verificationLoading}
+					/>
+					<button
+						type="button"
+						onclick={sendCode}
+						disabled={verificationLoading || !uniEmail}
+						class="px-4 py-2.5 text-sm font-medium rounded-bazar-sm transition-colors
+							{verificationLoading || !uniEmail
+								? 'bg-bazar-gray-100 text-bazar-gray-400 cursor-not-allowed'
+								: 'bg-bazar-purple text-white hover:opacity-90'}"
+					>
+						{verificationLoading ? 'Se trimite...' : 'Trimite cod'}
+					</button>
+				</div>
+			{:else}
+				<p class="text-sm text-bazar-gray-500 mb-3">
+					Introdu codul trimis la <strong>{uniEmail}</strong>
+				</p>
+				<div class="flex gap-2">
+					<input
+						type="text"
+						placeholder="000000"
+						maxlength="6"
+						bind:value={verificationCode}
+						class="flex-1 px-3 py-2.5 text-sm border-2 border-bazar-gray-200 rounded-bazar-sm focus:outline-none focus:border-bazar-purple transition-colors tracking-widest text-center font-mono"
+						disabled={verificationLoading}
+					/>
+					<button
+						type="button"
+						onclick={verifyCode}
+						disabled={verificationLoading || verificationCode.length !== 6}
+						class="px-4 py-2.5 text-sm font-medium rounded-bazar-sm transition-colors
+							{verificationLoading || verificationCode.length !== 6
+								? 'bg-bazar-gray-100 text-bazar-gray-400 cursor-not-allowed'
+								: 'bg-bazar-purple text-white hover:opacity-90'}"
+					>
+						{verificationLoading ? 'Se verifica...' : 'Verifica'}
+					</button>
+				</div>
 				<button
 					type="button"
-					class="px-4 py-2.5 text-sm font-medium bg-bazar-gray-100 text-bazar-gray-400 rounded-bazar-sm cursor-not-allowed"
-					disabled
-					title="In curand"
+					onclick={() => { verificationStep = 'email'; verificationError = ''; verificationSuccess = ''; verificationCode = ''; }}
+					class="mt-2 text-xs text-bazar-purple hover:underline"
 				>
-					Trimite cod
+					Schimba emailul sau solicita un cod nou
 				</button>
-			</div>
-			<p class="text-xs text-bazar-gray-400 mt-2">Disponibil in curand.</p>
+			{/if}
 		</div>
 	{/if}
 
