@@ -101,10 +101,42 @@ Deno.serve(async (req) => {
         return jsonResponse({ error: 'Eroare la crearea codului de verificare.' }, 500);
       }
 
-      // TODO: Send email with the code via Resend/SendGrid.
-      // For MVP/testing, we return the code in the response.
-      console.log(`Verification code for ${email}: ${code}`);
+      // Send email with Resend if API key is configured
+      const resendApiKey = Deno.env.get('RESEND_API_KEY');
+      if (resendApiKey) {
+        const emailRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendApiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: Deno.env.get('RESEND_FROM_EMAIL') || 'Bazar <noreply@resend.dev>',
+            to: [email],
+            subject: `Codul tău Bazar: ${code}`,
+            html: `
+              <div style="font-family: sans-serif; max-width: 400px; margin: 0 auto; padding: 24px;">
+                <h2 style="font-size: 24px; margin-bottom: 8px;">Verificare email universitar</h2>
+                <p style="color: #666; margin-bottom: 24px;">Folosește codul de mai jos pentru a-ți verifica emailul universitar pe Bazar.</p>
+                <div style="background: #F0EFE9; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 24px;">
+                  <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px;">${code}</span>
+                </div>
+                <p style="color: #999; font-size: 13px;">Codul expiră în 10 minute.</p>
+              </div>
+            `,
+          }),
+        });
 
+        if (!emailRes.ok) {
+          console.error('Resend error:', await emailRes.text());
+          return jsonResponse({ error: 'Eroare la trimiterea emailului.' }, 500);
+        }
+
+        return jsonResponse({ success: true });
+      }
+
+      // Fallback: no email provider configured — return code for testing
+      console.log(`Verification code for ${email}: ${code}`);
       return jsonResponse({ success: true, code });
     } else if (action === 'verify-code') {
       const { code } = body as { code: string };
