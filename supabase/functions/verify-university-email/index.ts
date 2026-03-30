@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
     // Get user from JWT
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return jsonResponse({ error: 'Unauthorized' }, 401);
+      return jsonResponse({ error: 'Trebuie sa fii autentificat.' }, 401);
     }
     const token = authHeader.replace('Bearer ', '');
     const {
@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
       error: authError,
     } = await supabase.auth.getUser(token);
     if (authError || !user) {
-      return jsonResponse({ error: 'Unauthorized' }, 401);
+      return jsonResponse({ error: 'Sesiunea a expirat. Te rugam sa te reconectezi.' }, 401);
     }
 
     const body = await req.json();
@@ -51,15 +51,16 @@ Deno.serve(async (req) => {
       const domain = email.split('@')[1].toLowerCase();
 
       // Validate domain against known university email domains
-      const { data: university, error: uniError } = await supabase
-        .from('universities')
-        .select('id, name')
-        .eq('email_domain', domain)
+      const { data: domainEntry, error: domainError } = await supabase
+        .from('university_email_domains')
+        .select('university_id, domain')
+        .eq('domain', domain)
+        .limit(1)
         .single();
 
-      if (uniError || !university) {
+      if (domainError || !domainEntry) {
         return jsonResponse(
-          { error: 'Domeniul de email nu este asociat cu o universitate cunoscuta.' },
+          { error: `Domeniul "${domain}" nu este asociat cu o universitate cunoscuta. Contacteaza-ne daca crezi ca este o eroare.` },
           400
         );
       }

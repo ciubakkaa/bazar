@@ -20,6 +20,20 @@
 
 	const supabase = createClient();
 
+	function extractError(data: unknown, error: unknown): string {
+		// supabase.functions.invoke puts the response body in `data` even on non-2xx
+		if (data && typeof data === 'object' && 'error' in data) {
+			return (data as { error: string }).error;
+		}
+		if (error && typeof error === 'object' && 'message' in error) {
+			const msg = (error as { message: string }).message;
+			// Replace the generic SDK message with something useful
+			if (msg.includes('non-2xx')) return 'Eroare de server. Incearca din nou.';
+			return msg;
+		}
+		return 'Eroare de conexiune. Incearca din nou.';
+	}
+
 	async function sendCode() {
 		verificationError = '';
 		verificationSuccess = '';
@@ -31,13 +45,8 @@
 				{ body: { action: 'send-code', email: uniEmail } }
 			);
 
-			if (error) {
-				verificationError = 'Eroare de conexiune. Incearca din nou.';
-				return;
-			}
-
-			if (result?.error) {
-				verificationError = result.error;
+			if (error || result?.error) {
+				verificationError = extractError(result, error);
 				return;
 			}
 
@@ -59,13 +68,8 @@
 				{ body: { action: 'verify-code', code: verificationCode } }
 			);
 
-			if (error) {
-				verificationError = 'Eroare de conexiune. Incearca din nou.';
-				return;
-			}
-
-			if (result?.error) {
-				verificationError = result.error;
+			if (error || result?.error) {
+				verificationError = extractError(result, error);
 				return;
 			}
 

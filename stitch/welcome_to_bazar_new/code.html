@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="ro"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bazar | Haosul devine simplu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#6c5a00",
+              "secondary-dim": "#504f4f",
+              "on-secondary-container": "#525151",
+              "secondary-fixed-dim": "#d6d4d3",
+              "background": "#f5f6f7",
+              "primary": "#6c5a00",
+              "error-dim": "#b92902",
+              "on-secondary-fixed-variant": "#5c5b5b",
+              "tertiary-fixed": "#ff928c",
+              "on-primary-fixed": "#453900",
+              "surface-variant": "#dadddf",
+              "surface-container-low": "#eff1f2",
+              "on-secondary-fixed": "#403f3f",
+              "primary-fixed-dim": "#efc900",
+              "on-background": "#2c2f30",
+              "secondary-container": "#e5e2e1",
+              "on-error": "#ffefec",
+              "on-secondary": "#f5f2f1",
+              "secondary": "#5c5b5b",
+              "on-primary": "#fff2cd",
+              "surface-container-high": "#e0e3e4",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "inverse-primary": "#ffd709",
+              "inverse-surface": "#0c0f10",
+              "error": "#b02500",
+              "surface-container": "#e6e8ea",
+              "on-primary-fixed-variant": "#665500",
+              "tertiary": "#b41924",
+              "surface-bright": "#f5f6f7",
+              "tertiary-dim": "#a3041a",
+              "error-container": "#f95630",
+              "on-error-container": "#520c00",
+              "tertiary-fixed-dim": "#ff7b75",
+              "on-tertiary-fixed": "#3a0004",
+              "surface": "#f5f6f7",
+              "surface-dim": "#d1d5d7",
+              "primary-dim": "#5e4e00",
+              "primary-fixed": "#ffd709",
+              "on-tertiary-fixed-variant": "#790010",
+              "on-surface-variant": "#595c5d",
+              "primary-container": "#ffd709",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#2c2f30",
+              "tertiary-container": "#ff928c",
+              "on-tertiary-container": "#69000c",
+              "on-primary-container": "#5b4b00",
+              "secondary-fixed": "#e5e2e1",
+              "outline-variant": "#abadae",
+              "surface-container-highest": "#dadddf"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f5f6f7;
+        color: #2c2f30;
+      }
+      h1, h2, h3, h4 {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="bg-white/20 dark:bg-zinc-900/20 backdrop-blur-xl fixed top-0 z-50 w-full">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-yellow-400 text-3xl">grid_view</span>
+<span class="text-2xl font-black text-zinc-900 tracking-tighter">Bazar</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-zinc-900 font-bold hover:bg-yellow-400/10 transition-colors px-3 py-1 rounded-full" href="#">Acasa</a>
+<a class="text-zinc-500 hover:text-yellow-500 transition-colors" href="#">Misiune</a>
+<a class="text-zinc-500 hover:text-yellow-500 transition-colors" href="#">Comunitate</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block text-zinc-900 font-bold px-4 py-2 hover:bg-yellow-400/10 rounded-full transition-all">Logare</button>
+<div class="w-10 h-10 rounded-full bg-zinc-200 overflow-hidden border-2 border-yellow-400">
+<img alt="Avatar" data-alt="close-up portrait of a smiling young university student with a trendy haircut in bright natural outdoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmlYI3cU1k_tVBNFp2jxavhcv36dgkKugjBVIKqeh7vUUunxZs_aRpIQenIIMZH1CwHYJE781kvcQy3bamKcTlmWEftemGTgsmMFTt_dRG8I_rIBpxgTKP4X27NyZpR6tcQKXCGnHd1Z8mlV54M-OJRWO69syY1UIscmTot5YdZ5cFuuldajeFssT4f2EfEunH_PkH3gF8kXi3NYv8W2OXHyME56TYhYaBI4bphXu6lTYD8iTqZaXPrQkAiyuyeXKPxaz7WKOG-l8"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 py-12 md:py-20 lg:py-28">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="order-2 lg:order-1">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-tertiary-container text-on-tertiary-container font-bold text-sm mb-6">
+<span class="material-symbols-outlined mr-2 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                        Bazarul Studenților
+                    </div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-on-background mb-6 leading-[0.9]">
+                        Inceputul facultății e <span class="text-primary-container bg-on-background px-4 inline-block transform -rotate-2">haos</span>.
+                    </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant mb-10 max-w-lg leading-relaxed">
+                        Bazar face totul simplu. De la liste de bagaje la colegi de cameră perfecți. Construit de studenți, pentru studenți.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary-container text-on-surface text-lg font-extrabold px-10 py-5 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+                            Înregistrează-te acum
+                        </button>
+<button class="bg-surface-container-highest text-on-background text-lg font-bold px-10 py-5 rounded-full hover:bg-surface-container-high transition-colors">
+                            Vezi cum funcționează
+                        </button>
+</div>
+</div>
+<div class="order-1 lg:order-2 relative">
+<div class="w-full aspect-square rounded-[4rem] overflow-hidden rotate-3 shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="group of diverse happy university students laughing and studying together in a vibrant modern campus library with bright sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAcqrKSyQIWc_E6veXyjwn3GKMmpC7IamHZYm6YCGWJm1TFGunR0OWVbU5rTlK1Z78EHekFXUGwrl69TCmjyD5lN-fOS5Gf2j-NKWC1_vkeakAc97s7X_BcYCa0fgwcm4X-jyxaR3U5w5h7EKlMei5_Lk-6lCBDkdl8Zo3RxPgW5f8h6kG3YQfpzQsUulyHmXtODce1YzT-69htTc0-z0wLR5wn81Wt1SPuiW15hcPc6El0hkGtRP5sUM6y64t2KMsjGtalxEHhuk"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl flex items-center gap-4 max-w-xs transform -rotate-3">
+<div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-900" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div>
+<p class="font-bold text-sm">Matching activ</p>
+<p class="text-xs text-zinc-500">2,400+ colegi găsiți azi</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Checklist -->
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 lg:p-12 flex flex-col justify-between overflow-hidden relative group">
+<div>
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-yellow-500 text-3xl">checklist</span>
+</div>
+<h3 class="text-3xl font-bold mb-4">Checklist Inteligent</h3>
+<p class="text-on-surface-variant text-lg max-w-md">Nu uita niciodată prelungitorul sau perdeaua de duș. Liste pre-completate de experți (a se citi: studenți din anul 3).</p>
+</div>
+<div class="mt-12 flex gap-4 overflow-hidden opacity-40 group-hover:opacity-100 transition-opacity">
+<div class="bg-white px-6 py-4 rounded-full font-bold whitespace-nowrap shadow-sm border border-outline-variant/10">Acte înscriere ✅</div>
+<div class="bg-white px-6 py-4 rounded-full font-bold whitespace-nowrap shadow-sm border border-outline-variant/10">Lenjerie pat ✅</div>
+<div class="bg-white px-6 py-4 rounded-full font-bold whitespace-nowrap shadow-sm border border-outline-variant/10">Laptop ✅</div>
+</div>
+</div>
+<!-- Community -->
+<div class="bg-on-background text-white rounded-xl p-8 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+<div class="z-10">
+<div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-yellow-400 text-3xl" style="font-variation-settings: 'FILL' 1;">forum</span>
+</div>
+<h3 class="text-3xl font-bold mb-4">Comunitate</h3>
+<p class="text-zinc-400 text-lg">Pune întrebări, primește răspunsuri sincere despre profesori, cămine sau cele mai bune locuri de cafea.</p>
+</div>
+<div class="mt-8 z-10">
+<button class="text-yellow-400 font-bold flex items-center gap-2 group">
+                            Explorează Forumul <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Roommate Matching -->
+<div class="bg-primary-container rounded-xl p-8 lg:p-12 flex flex-col md:flex-row gap-8 md:col-span-3 items-center">
+<div class="flex-1">
+<h3 class="text-4xl font-bold text-on-surface mb-4">Roomies de nota 10</h3>
+<p class="text-on-primary-container text-xl max-w-xl">Algoritmul nostru te ajută să găsești oameni cu același program de somn și același nivel de... curățenie. Gata cu surprizele neplăcute în prima zi de cămin.</p>
+<button class="mt-8 bg-on-surface text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">Găsește-ți colegul</button>
+</div>
+<div class="flex -space-x-6">
+<img class="w-24 h-24 md:w-32 md:w-32 rounded-full border-4 border-primary-container shadow-xl" data-alt="portrait of a cheerful young woman with curly hair smiling in a sunny studio setting with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnmSnLvXRr2LDTVEQb6h56v1foWa7KILZ_AZkEpzKHTdgGOcZDKeQAMShitwmK-1ZeIFDUW91Mg8LtCfWn6UB0GtmRm_VFNZBKZnMBbt5sZvOx-qn_zqG8TWsG46auw4gZVrioXzKhNd7YXLCG0ydVe7zrDc_GVN-h7TamiZmNtpJvqzVp9yIMHRmihFI-0PtWn-O5WWijJxLr5xO4Rn5y1anovSnicQZ-gVZUtWSGGus6sIEJThatmcGq5e3x1hoZlX4NlfMaQ3E"/>
+<img class="w-24 h-24 md:w-32 md:w-32 rounded-full border-4 border-primary-container shadow-xl" data-alt="portrait of a young man with a friendly smile wearing a casual shirt against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5mErX7z6bUHSLb2lDcjiSeJdhKv_W6ZyTsFS2eEX97hXJwBvIqWYm11LS1fz4sbfTFFdp6TJFp1C3ItV9ApCXK4Hkk-bLC_TFtoBig7I6y2cm5Hv7gWquXggVIcyg10qDbLarp3Ka1LI0_9dgPuvNSdVCYF-QssANXRufAwrg22F0TnMEueySYwnc6SVMTbm5xzyAU0hjOtDJ-A6hiZbMCkqA3Ma4cd0HEDku6ZxiFOqCNUwQcv6rex0s0UQaLsCBLB9erP4xnPY"/>
+<div class="w-24 h-24 md:w-32 md:w-32 rounded-full bg-on-surface-variant flex items-center justify-center border-4 border-primary-container text-white text-3xl font-bold shadow-xl">
+                            98%
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-6xl font-bold mb-8">De ce facem asta?</h2>
+<p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed">
+                    Am trecut pe acolo. Am uitat buletinul la înscriere, am stat în cameră cu cineva care asculta trap la 3 dimineața și nu știam de unde să luăm un frigider ieftin. 
+                    <span class="text-on-background font-extrabold">Bazar este soluția pe care ne-am fi dorit să o avem noi.</span>
+</p>
+<div class="mt-16 inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-sm">
+<span class="h-px w-8 bg-primary"></span>
+                    Built by students, for students
+                    <span class="h-px w-8 bg-primary"></span>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+<div class="bg-on-background rounded-[3rem] p-12 lg:p-24 text-center text-white relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-5xl md:text-7xl font-bold mb-8">Ești gata să începi?</h2>
+<p class="text-zinc-400 text-xl mb-12 max-w-2xl mx-auto">Alătură-te celor mii de studenți care au transformat haosul de început de an într-o experiență memorabilă.</p>
+<button class="bg-primary-container text-on-surface px-12 py-6 rounded-full text-xl font-black shadow-2xl hover:scale-110 transition-transform">
+                        Inregistrează-te acum
+                    </button>
+</div>
+<!-- Decorative element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-yellow-400 opacity-10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400 opacity-10 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<footer class="bg-zinc-50 dark:bg-zinc-900 fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden">
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-zinc-900 rounded-full px-5 py-2 scale-110 -translate-y-2 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checklist</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs font-bold uppercase tracking-widest mt-1">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs font-bold uppercase tracking-widest mt-1">Roomies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs font-bold uppercase tracking-widest mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs font-bold uppercase tracking-widest mt-1">Q&amp;A</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</footer>
+</body></html>

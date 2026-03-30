@@ -108,7 +108,7 @@
 		<h1 class="text-2xl font-heading font-bold text-bazar-dark">Oameni</h1>
 		<button
 			onclick={() => (filterOpen = true)}
-			class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-bazar-dark border-2 border-bazar-gray-200 rounded-bazar-sm hover:border-bazar-gray-300 transition-colors"
+			class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-bazar-dark bg-bazar-gray-100 rounded-bazar-sm hover:bg-bazar-gray-200 transition-colors"
 		>
 			<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -121,7 +121,7 @@
 	{#if !isVerified}
 		<a
 			href="/profile"
-			class="block mb-4 px-4 py-3 bg-amber-50 border border-amber-200 rounded-bazar-sm text-sm text-amber-800"
+			class="block mb-4 px-4 py-3 bg-amber-50 rounded-bazar-sm text-sm text-amber-800"
 		>
 			Verifică-te pentru a apărea în listări și a trimite mesaje &rarr;
 		</a>
@@ -130,28 +130,28 @@
 	{#if !hasQuiz}
 		<a
 			href="/quiz"
-			class="block mb-4 px-4 py-3 bg-bazar-yellow/20 border border-bazar-yellow/40 rounded-bazar-sm text-sm text-bazar-dark"
+			class="block mb-4 px-4 py-3 bg-bazar-yellow/20 rounded-bazar-sm text-sm text-bazar-dark"
 		>
 			Completează quiz-ul pentru a vedea compatibilitatea &rarr;
 		</a>
 	{/if}
 
 	<!-- Tab switcher -->
-	<div class="flex gap-1 mb-6 bg-bazar-gray-100 rounded-bazar-pill p-1">
+	<div class="flex gap-1 mb-6 bg-bazar-gray-100 rounded-full p-1">
 		<button
 			onclick={() => setTab('all')}
-			class="flex-1 py-2 text-sm font-medium rounded-bazar-pill transition-colors
+			class="flex-1 py-2 text-sm font-semibold rounded-full transition-colors
 				{activeTab === 'all'
-					? 'bg-white text-bazar-dark shadow-sm'
+					? 'bg-bazar-yellow text-bazar-dark'
 					: 'text-bazar-gray-500 hover:text-bazar-dark'}"
 		>
 			Toți
 		</button>
 		<button
 			onclick={() => setTab('roommate')}
-			class="flex-1 py-2 text-sm font-medium rounded-bazar-pill transition-colors
+			class="flex-1 py-2 text-sm font-semibold rounded-full transition-colors
 				{activeTab === 'roommate'
-					? 'bg-white text-bazar-dark shadow-sm'
+					? 'bg-bazar-yellow text-bazar-dark'
 					: 'text-bazar-gray-500 hover:text-bazar-dark'}"
 		>
 			Caută coleg de cameră

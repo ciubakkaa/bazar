@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="ro"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bazar - Alătură-te Comunității</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#6c5a00",
+                        "secondary-dim": "#504f4f",
+                        "on-secondary-container": "#525151",
+                        "secondary-fixed-dim": "#d6d4d3",
+                        "background": "#f5f6f7",
+                        "primary": "#6c5a00",
+                        "error-dim": "#b92902",
+                        "on-secondary-fixed-variant": "#5c5b5b",
+                        "tertiary-fixed": "#ff928c",
+                        "on-primary-fixed": "#453900",
+                        "surface-variant": "#dadddf",
+                        "surface-container-low": "#eff1f2",
+                        "on-secondary-fixed": "#403f3f",
+                        "primary-fixed-dim": "#efc900",
+                        "on-background": "#2c2f30",
+                        "secondary-container": "#e5e2e1",
+                        "on-error": "#ffefec",
+                        "on-secondary": "#f5f2f1",
+                        "secondary": "#5c5b5b",
+                        "on-primary": "#fff2cd",
+                        "surface-container-high": "#e0e3e4",
+                        "inverse-on-surface": "#9b9d9e",
+                        "outline": "#757778",
+                        "inverse-primary": "#ffd709",
+                        "inverse-surface": "#0c0f10",
+                        "error": "#b02500",
+                        "surface-container": "#e6e8ea",
+                        "on-primary-fixed-variant": "#665500",
+                        "tertiary": "#b41924",
+                        "surface-bright": "#f5f6f7",
+                        "tertiary-dim": "#a3041a",
+                        "error-container": "#f95630",
+                        "on-error-container": "#520c00",
+                        "tertiary-fixed-dim": "#ff7b75",
+                        "on-tertiary-fixed": "#3a0004",
+                        "surface": "#f5f6f7",
+                        "surface-dim": "#d1d5d7",
+                        "primary-dim": "#5e4e00",
+                        "primary-fixed": "#ffd709",
+                        "on-tertiary-fixed-variant": "#790010",
+                        "on-surface-variant": "#595c5d",
+                        "primary-container": "#ffd709",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#2c2f30",
+                        "tertiary-container": "#ff928c",
+                        "on-tertiary-container": "#69000c",
+                        "on-primary-container": "#5b4b00",
+                        "secondary-fixed": "#e5e2e1",
+                        "outline-variant": "#abadae",
+                        "surface-container-highest": "#dadddf"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f5f6f7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2c2f30;
+        }
+        .neo-pop-card {
+            background: #ffffff;
+            border-radius: 3rem;
+        }
+        .bazar-input {
+            background-color: #e0e3e4;
+            border: none;
+            border-radius: 9999px;
+            padding: 1.25rem 1.75rem;
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+        .bazar-input:focus {
+            background-color: #dadddf;
+            outline: 2px solid rgba(255, 215, 9, 0.4);
+            box-shadow: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-8">
+<!-- Container for the entire Auth Flow -->
+<main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Left Column: Editorial Content (Visual Anchor) -->
+<section class="hidden lg:flex lg:col-span-7 flex-col justify-between p-12 bg-primary-container rounded-xl overflow-hidden relative min-h-[700px]">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-16">
+<span class="text-3xl font-black font-headline tracking-tighter text-on-background">Bazar</span>
+</div>
+<h1 class="text-6xl font-headline font-bold leading-[0.9] tracking-tighter text-on-background mb-8">
+                    MAI MULT DECÂT <br/> UN CĂMIN. <br/> O COMUNITATE.
+                </h1>
+<p class="text-xl font-body font-medium text-on-background/80 max-w-md">
+                    Găsește colegi de cameră, împarte resurse și participă la evenimente dedicate studenților din România.
+                </p>
+</div>
+<div class="relative z-10 flex gap-4">
+<div class="bg-white/30 backdrop-blur-md p-4 rounded-xl flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="portrait of a smiling young romanian student with glasses in a casual urban setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyvlSC87RhQa8X-yq16lcQkze2xMu8snitpJvZ3J8N5fgfW_pTu8mQkYj8o-8YVnPa8wKCSmKAjQo7vaNOVP9vSA4Sj2qoB9dthbjo1dklCEF7zuHhgJmQdpaBRhTmLuzsfCSs5wrr4RrhZAeKvCN-gYGfN-wKuZ3uvlJHBKN8SoQQhctZLtV12I4cSsSgSDU71_E3r454Zy4xPAuIlyHF3EdUb-PophTzN0WzU7owbWfsAYCWnshUsvcgBL-Gd4oHV5RcUfXDh4E"/>
+</div>
+<div>
+<p class="text-sm font-bold">Andrei G.</p>
+<p class="text-xs opacity-70">ASE București</p>
+</div>
+</div>
+<div class="bg-white/30 backdrop-blur-md p-4 rounded-xl flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="portrait of a young woman student with a bright smile in a library or modern campus building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFv9HIESHOxgQWHb6Y7HtwAMrphdV_Ns2AQhz1XjJYQZ8qGXugx20Yfdh6U4VNT2PT8GSd1vOX7INCkMn3ObHAqH-jaF1mpReUPKsO0Dx6RV79xXrwxPNmeDizjjPghrK_zc5-apLujm7wmnOeKOMTMLU3qC1YGQFOtKF2h5S5dUDkYH4ojz1-EbTUupVwqRM3OXWW3xk22aFKwCc90VI8lDF3r_ZxnTjOt-YGe0qsVla6OGVyar2F_cs7jlg0qs0nmhO4PZQkHms"/>
+</div>
+<div>
+<p class="text-sm font-bold">Elena M.</p>
+<p class="text-xs opacity-70">UAD Cluj</p>
+</div>
+</div>
+</div>
+<!-- Abstract Background Shapes -->
+<div class="absolute -bottom-20 -right-20 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover grayscale" data-alt="vibrant abstract background with organic shapes and energetic brush strokes in yellow and charcoal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfRxJBvrC_aoBM__ujX0hMVznhtNGV84XJkRfH7mvByO0Ql9LWWbo8bEV76a02Z4u9e4Sdw8sW3tbFzOoKynVMBGbMNGshkdjE8botFHuJyxscBaKQ7n4nLrJW9DqPiG2oN_A_SRirVUxADCc-PeX_sVpBcG1muyHTmNRPAOelj_hl0dfmYUBAkk3_GoVmgWlP3VmWhpeaO5f4f2CgJpQIbHKsq5pw97LyaMcSZskYSOW40tjaw_yMT5lC86Fa00Xu1rSRh3QCDDM"/>
+</div>
+</section>
+<!-- Right Column: Form (The Interaction Shell) -->
+<section class="lg:col-span-5 flex flex-col justify-center">
+<div class="neo-pop-card p-8 sm:p-12 shadow-sm border border-outline-variant/10">
+<!-- Mobile Logo -->
+<div class="lg:hidden flex justify-center mb-8">
+<span class="text-3xl font-black font-headline tracking-tighter text-on-background">Bazar</span>
+</div>
+<div class="mb-10 text-center lg:text-left">
+<h2 class="text-3xl font-headline font-bold mb-2">Bun venit! 👋</h2>
+<p class="text-on-surface-variant font-body">Creează-ți contul de student în câteva secunde.</p>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-2 py-4 px-6 bg-surface-container-low hover:bg-surface-container rounded-full transition-colors group">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpROuFOsmtNOqd9VlVEVyr9RURk4USropAhuqULd5JRxQS2mHcxtL8Hw0sTC5xhRzvKi-tW_ooqz2xyhlRkYdvOLHIDdlNNO082tdINtU4nBM2XyizAMpGbgSWBFn0azZ3QI8yVswycqCVCBz6TalosjvPS7rtMOBGUj838QPDSN6lWjL6-BcfvbcJ9zQBIJXA-VJDMbahEXvZspXPKgdtK6OPMm5LfEYF81fZQqnEuY0ISrVHKCUTkuYg5yN4eP5Tqfk09SCuwRo"/>
+<span class="font-bold text-sm">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-4 px-6 bg-surface-container-low hover:bg-surface-container rounded-full transition-colors">
+<img alt="Apple" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZVKWSXviBMeWUMCRfUiYSyoaEctG7PrKUmshXQWG3pw7XzXtVl0AXaNCX5Jxwa-Mt31KuZY_S9HaMIDUJ-5nWwcmAe0VOes-p49ObR-63B4UBQWbXJY_Puokuc6qu3AI1rXmWMvNodyeh6g4zqu9GZUAV7JkVbK6AUISr8vvoW2X6BrlZvC86oPSS3Zs7t9O8-uyS_YLLa2CNrmhCyhee0KsvL9hHLR3DVE5IFEcQoArFR-lOui6f2lNM7O0mMEYM-MYhgUOPa_4"/>
+<span class="font-bold text-sm">Apple</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center gap-4 mb-8">
+<div class="flex-grow h-px bg-outline-variant/30"></div>
+<span class="text-xs font-bold text-outline uppercase tracking-widest">Sau Email</span>
+<div class="flex-grow h-px bg-outline-variant/30"></div>
+</div>
+<!-- Registration Form -->
+<form class="space-y-4">
+<div>
+<input class="bazar-input" placeholder="Adresa de email facultate sau personală" required="" type="email"/>
+</div>
+<div class="relative">
+<input class="bazar-input" placeholder="Parolă" required="" type="password"/>
+<button class="absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-xl">visibility_off</span>
+</button>
+</div>
+<!-- Invitation Code Field -->
+<div class="pt-2">
+<div class="relative group">
+<input class="bazar-input pr-12" placeholder="Cod Invitatie Asociatie (Facultativ)" type="text"/>
+<div class="absolute right-5 top-1/2 -translate-y-1/2 flex items-center">
+<span class="material-symbols-outlined text-emerald-500 hidden group-focus-within:block" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<p class="text-[10px] mt-2 ml-5 text-on-surface-variant uppercase tracking-tighter font-bold">Verificare automată activă</p>
+</div>
+<div class="pt-6">
+<button class="w-full py-5 bg-primary-container text-on-background font-headline font-black text-xl rounded-full shadow-[0_10px_20px_-5px_rgba(255,215,9,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                            Creeaza Cont
+                        </button>
+</div>
+</form>
+<!-- Footer Links -->
+<div class="mt-10 text-center">
+<p class="text-sm text-on-surface-variant font-body">
+                        Ai deja un cont? 
+                        <a class="text-on-background font-extrabold underline decoration-primary-container decoration-4 underline-offset-2 hover:text-primary transition-colors" href="#">Loghează-te aici</a>
+</p>
+</div>
+<div class="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2 opacity-40 text-[10px] font-bold uppercase tracking-widest">
+<a class="hover:opacity-100" href="#">Termeni</a>
+<a class="hover:opacity-100" href="#">Confidențialitate</a>
+<a class="hover:opacity-100" href="#">Ajutor</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Background Decorative Element (Subtle) -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[30%] h-[30%] bg-tertiary-container/10 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

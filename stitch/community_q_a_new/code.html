@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="ro"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bazar - Q&amp;A Comunitate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#6c5a00",
+              "secondary-dim": "#504f4f",
+              "on-secondary-container": "#525151",
+              "secondary-fixed-dim": "#d6d4d3",
+              "background": "#f5f6f7",
+              "primary": "#6c5a00",
+              "error-dim": "#b92902",
+              "on-secondary-fixed-variant": "#5c5b5b",
+              "tertiary-fixed": "#ff928c",
+              "on-primary-fixed": "#453900",
+              "surface-variant": "#dadddf",
+              "surface-container-low": "#eff1f2",
+              "on-secondary-fixed": "#403f3f",
+              "primary-fixed-dim": "#efc900",
+              "on-background": "#2c2f30",
+              "secondary-container": "#e5e2e1",
+              "on-error": "#ffefec",
+              "on-tertiary": "#ffefee",
+              "on-secondary": "#f5f2f1",
+              "secondary": "#5c5b5b",
+              "on-primary": "#fff2cd",
+              "surface-container-high": "#e0e3e4",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "inverse-primary": "#ffd709",
+              "inverse-surface": "#0c0f10",
+              "error": "#b02500",
+              "surface-container": "#e6e8ea",
+              "on-primary-fixed-variant": "#665500",
+              "tertiary": "#b41924",
+              "surface-bright": "#f5f6f7",
+              "tertiary-dim": "#a3041a",
+              "error-container": "#f95630",
+              "on-error-container": "#520c00",
+              "tertiary-fixed-dim": "#ff7b75",
+              "on-tertiary-fixed": "#3a0004",
+              "surface": "#f5f6f7",
+              "surface-dim": "#d1d5d7",
+              "primary-dim": "#5e4e00",
+              "primary-fixed": "#ffd709",
+              "on-tertiary-fixed-variant": "#790010",
+              "on-surface-variant": "#595c5d",
+              "primary-container": "#ffd709",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#2c2f30",
+              "tertiary-container": "#ff928c",
+              "on-tertiary-container": "#69000c",
+              "on-primary-container": "#5b4b00",
+              "secondary-fixed": "#e5e2e1",
+              "outline-variant": "#abadae",
+              "surface-container-highest": "#dadddf"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-white/20 dark:bg-zinc-900/20 backdrop-blur-xl sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-yellow-400/10 dark:hover:bg-yellow-400/20 transition-colors rounded-full active:scale-95 duration-200 ease-out">
+<span class="material-symbols-outlined text-zinc-900 dark:text-zinc-50">grid_view</span>
+</button>
+<span class="text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter">Bazar</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-yellow-500 font-medium transition-colors" href="#">Checklist</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-yellow-500 font-medium transition-colors" href="#">Roomies</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-yellow-500 font-medium transition-colors" href="#">Chats</a>
+<a class="text-zinc-900 dark:text-zinc-50 font-bold transition-colors" href="#">Q&amp;A</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-primary-container">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a young student with a friendly expression and stylish glasses in a modern campus setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuq4Ig7Z2v-7G-xwhwhTsl2tb0nfWK1_LZfji7ITwOb32OAigAiKdHcg6Y3LRYn2OUjGeymdTeJW5xnHR7fUXF03rf4p8u1Fm1ZjzPnyTeFRpMI2i_Gro46UpL6wAAkAEv6bacTQMIySwas8-R4tZF4NGJoobmgb6SD53Ajuo9imVQANBrXgikCAxQ5pqa4LwzISgRYNLNEi68SDPeurspKuF4-j-XI1_iwW3UYiwCTrJDgGvX1s6lLpSfVLqovsReVDMcFdz724M"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-8">
+<!-- Hero Section Asymmetric -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-end">
+<div class="lg:col-span-8">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 leading-[0.9]">
+                    Pune o întrebare.<br/> <span class="text-primary-container bg-on-background px-4 inline-block transform -rotate-1">Primește răspuns.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    Comunitatea Bazar este locul unde bobocii primesc sfaturi de la studenții din anii mai mari. Tot ce trebuie să știi despre viața de student.
+                </p>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">verified_user</span>
+</div>
+<p class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-2">Status Cont</p>
+<p class="text-on-surface font-semibold mb-4">Doar utilizatorii verificați pot posta întrebări.</p>
+<button class="w-full py-3 bg-primary-container text-on-surface font-bold rounded-full hover:scale-[1.02] transition-transform active:scale-95">
+                        Verifică-te acum
+                    </button>
+</div>
+</div>
+</section>
+<!-- Pinned FAQ Section -->
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-fixed">push_pin</span>
+<h2 class="text-2xl font-bold">Întrebări Frecvente (FAQ)</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
+<span class="inline-block p-3 bg-tertiary-container text-on-tertiary-container rounded-full mb-4">
+<span class="material-symbols-outlined">apartment</span>
+</span>
+<h3 class="font-bold text-xl mb-2">Cum obțin viză de flotant?</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Procedura completă pentru studenții cazați în căminele din Sectorul 6...</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                        Vezi ghidul complet <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
+<span class="inline-block p-3 bg-secondary-container text-on-secondary-container rounded-full mb-4">
+<span class="material-symbols-outlined">description</span>
+</span>
+<h3 class="font-bold text-xl mb-2">Acte necesare bursă</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Lista actualizată pentru semestrul 1: adeverință venit, extras cont...</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                        Descarcă PDF <span class="material-symbols-outlined text-sm">download</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
+<span class="inline-block p-3 bg-primary-container text-on-primary-container rounded-full mb-4">
+<span class="material-symbols-outlined">medical_services</span>
+</span>
+<h3 class="font-bold text-xl mb-2">Cabinet medical studențesc</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Unde te poți înscrie la medicul de familie gratuit pentru studenți...</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                        Localizare hartă <span class="material-symbols-outlined text-sm">map</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-3 mb-8 overflow-x-auto pb-2">
+<button class="px-6 py-2 bg-primary-container text-on-surface rounded-full font-bold shadow-sm whitespace-nowrap">Toate</button>
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface rounded-full font-medium whitespace-nowrap">Cazare</button>
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface rounded-full font-medium whitespace-nowrap">Secretariat</button>
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface rounded-full font-medium whitespace-nowrap">Profesori</button>
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface rounded-full font-medium whitespace-nowrap">Cantină</button>
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface rounded-full font-medium whitespace-nowrap">Transport</button>
+</div>
+<!-- Feed Grid -->
+<div class="space-y-6">
+<!-- Question Card 1 -->
+<article class="bg-surface-container-low rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-6 hover:bg-surface-container-high transition-colors group">
+<div class="flex flex-col items-center gap-2 md:w-16">
+<button class="p-2 rounded-full hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_less</span>
+</button>
+<span class="font-black text-xl">42</span>
+<button class="p-2 rounded-full hover:bg-zinc-200 transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_more</span>
+</button>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-3">
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full">Cazare</span>
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="Avatar of a young male student smiling, wearing a casual hoodie, bright campus lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3h4o0UBcHZodEu48DOy2uYTGYAf3AGfMoYGJdu_VHV5RVT2BJComGD7T4c_SlcD6mYmFHOS1QtXe-7XHEfcrxo99-uZ2ianLjoh92GfSHMEscSkbKR2SvSLwf9vKopvvqMSpzoz3-MyBe1Hs663eL5Hyh_cLVI9XLnKyrekTmFF2d8RzX_XWF9V5Hz0GQ1CoYQZQ0Jqk9ZWuuoyS8GnTKu4z20avJ_x_AA2RAJ_UFO9ub9lxAVoVuZe63Ksd4sVCqlu0-Qp9U3JI"/>
+<span class="text-sm font-bold">Andrei Popescu</span>
+<span class="text-xs text-on-surface-variant">• Boboc</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Cât de stricți sunt administratorii la căminul P16?</h2>
+<p class="text-on-surface-variant leading-relaxed mb-6">Salut! Tocmai m-am mutat în P16 și voiam să știu dacă se fac verificări des în camere sau dacă avem voie cu vizitatori după ora 22:00. Mersi!</p>
+<div class="bg-surface-container-lowest rounded-xl p-4 border-l-4 border-primary-container">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Top Answer • Anul 3</span>
+</div>
+<p class="text-sm font-medium">Sunt destul de chill dacă nu faci gălăgie. Vizitatorii trebuie să lase buletinul la poartă, dar oficial trebuie să plece la 22:00. Neoficial...</p>
+</div>
+</div>
+<div class="flex md:flex-col justify-end gap-3 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">forum</span>
+<span class="text-sm font-bold">12</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-bold">2h</span>
+</div>
+</div>
+</article>
+<!-- Question Card 2 -->
+<article class="bg-surface-container-low rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-6 hover:bg-surface-container-high transition-colors group">
+<div class="flex flex-col items-center gap-2 md:w-16">
+<button class="p-2 rounded-full hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_less</span>
+</button>
+<span class="font-black text-xl">18</span>
+<button class="p-2 rounded-full hover:bg-zinc-200 transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_more</span>
+</button>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-3">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full">Secretariat</span>
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="Smiling young woman student with long dark hair, professional but friendly, soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDTUMig2wIcbo-Ji3U6-1S9SCn6HExRYfb7pCF3WOugJ27CH9QfiJ6W07l7DNtBQOe-oyYdkIoPpukVZ0Qzl_qLkyFB-_YrHYNoaACHF16rTkKg7HliPhuOkXTkJXQQ2XKrN29dTtkRff9DFdjw6bpKevSbK53fuHbjK3HslOgN2MQ5S8eNeFsWMDaoHOTtEe_-ZKXwquTkucrzIxqS3vKUO16sB2Ilxk5i0BeYVi8dwIk4HERLp3ItYD8UmLY32BMn9BeaTC_fFc"/>
+<span class="text-sm font-bold">Maria Ionescu</span>
+<span class="text-xs text-on-surface-variant">• Anul 2</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Unde găsesc orarul actualizat pentru grupa 321AA?</h2>
+<p class="text-on-surface-variant leading-relaxed mb-6">Pe site-ul facultății apare cel de anul trecut. Există vreun grup de WhatsApp sau o platformă internă unde se postează varianta finală?</p>
+</div>
+<div class="flex md:flex-col justify-end gap-3 text-on-surface-variant">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+<span class="text-sm font-bold">0</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-bold">5h</span>
+</div>
+</div>
+</article>
+<!-- Question Card 3 -->
+<article class="bg-surface-container-low rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-6 hover:bg-surface-container-high transition-colors group">
+<div class="flex flex-col items-center gap-2 md:w-16">
+<button class="p-2 rounded-full hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_less</span>
+</button>
+<span class="font-black text-xl">89</span>
+<button class="p-2 rounded-full hover:bg-zinc-200 transition-colors">
+<span class="material-symbols-outlined text-2xl">expand_more</span>
+</button>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-3">
+<span class="bg-primary-container text-on-primary-container text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full">Profesori</span>
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full" data-alt="Young man with a beard and glasses, looking thoughtful, academic library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnuI8cQL3jh6sgt-8NrNN23ker7k07DplIMXGqhxfRGg1I-0YqB_nLuiC3R2ews2Bl9HMiAp96JMPflSMG2FnMhswmH-xfF5NSpVOZNBC_tUqWxglXahybYRhXKKmMT6PqkOatUcITXKIiOIY2aVBPShOoRsiRUYxb8MhFQTlbKDp2kf9-A7HbfOqsEUwNyGc-mh0LOYFrrgkQv-eyE5TsMWCT_r-mo7-W6p6iuONeAsrwdPC9DqP9WImURhgg2SEvx6ji7UQqeU4"/>
+<span class="text-sm font-bold">George Matei</span>
+<span class="text-xs text-on-surface-variant">• Boboc</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Sfaturi pentru examenul la Analiză Matematică cu Prof. Iorga?</h2>
+<p class="text-on-surface-variant leading-relaxed mb-6">Am auzit că e destul de greu. Pe ce pune accent cel mai mult? Teorie sau probleme? Există subiecte din anii trecuți pe undeva?</p>
+<div class="bg-surface-container-lowest rounded-xl p-4 border-l-4 border-primary-container">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Top Answer • Masterand</span>
+</div>
+<p class="text-sm font-medium">Iorga vrea să vadă că înțelegi logica din spatele formulelor. Nu învăța pe de rost. Mergi la cursuri, reține exemplele lui atipice, o să fie exact alea la examen!</p>
+</div>
+</div>
+<div class="flex md:flex-col justify-end gap-3 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">forum</span>
+<span class="text-sm font-bold">24</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-bold">1d</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Read Only Warning (Sticky Bottom or Inline) -->
+<div class="mt-12 p-8 bg-zinc-900 text-zinc-50 rounded-xl flex items-center justify-between gap-6 overflow-hidden relative">
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[12rem]">lock</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-2xl font-bold mb-1">Doar utilizatorii verificați pot posta</h3>
+<p class="text-zinc-400">Verificarea se face cu cardul de student sau adresa de mail instituțională.</p>
+</div>
+<button class="relative z-10 bg-primary-container text-on-surface px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 whitespace-nowrap">
+                Verifică Contul
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-zinc-50 dark:bg-zinc-900 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] dark:shadow-none rounded-t-[3rem] border-t-0 md:hidden">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Roomies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-zinc-900 rounded-full px-5 py-2 scale-110 -translate-y-2 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quiz</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Q&amp;A</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-yellow-500 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on context rules, but present for top-level if needed) -->
+<!-- In this case, since the user is not verified, we show a 'Lock' FAB or none. We choose none per suppression rules for focused transactional feel, or show 'Search' instead. -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-on-background text-primary-container rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform md:bottom-12">
+<span class="material-symbols-outlined text-3xl">search</span>
+</button>
+</body></html>

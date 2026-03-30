@@ -41,8 +41,8 @@
 </script>
 
 <div
-	class="bg-white border-2 border-bazar-gray-100 rounded-bazar-md p-4 transition-all
-		{is_completed ? 'opacity-55 hover:opacity-75' : 'hover:border-bazar-gray-300 hover:shadow-sm'}"
+	class="bg-white rounded-bazar-lg p-4 transition-all
+		{is_completed ? 'opacity-55 hover:opacity-75' : 'hover:shadow-[0_4px_24px_rgba(44,47,48,0.05)]'}"
 >
 	<div class="flex items-start gap-3">
 		<!-- Checkbox -->
@@ -79,7 +79,7 @@
 
 			<!-- Expanded details -->
 			{#if expanded && (description || url)}
-				<div class="mt-3 pt-3 border-t border-bazar-gray-100">
+				<div class="mt-3 pt-3 bg-bazar-offwhite -mx-4 -mb-4 px-4 py-3 rounded-b-bazar-lg">
 					{#if description}
 						<p class="text-sm text-bazar-gray-700 leading-relaxed">{description}</p>
 					{/if}

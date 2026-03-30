@@ -8,7 +8,7 @@
     { href: '/checklist', label: 'Checklist', icon: '📋' },
     { href: '/people', label: 'Oameni', icon: '👥' },
     { href: '/messages', label: 'Mesaje', icon: '💬' },
-    { href: '/qa', label: 'Întrebări', icon: '❓' },
+    { href: '/qa', label: 'Comunitate', icon: '📣' },
     { href: '/profile', label: 'Profil', icon: '👤' },
   ];
 
@@ -22,7 +22,7 @@
 </script>
 
 <!-- Desktop sidebar -->
-<nav class="hidden md:flex fixed top-0 left-0 w-[260px] h-screen flex-col bg-white border-r border-bazar-gray-100 z-50">
+<nav class="hidden md:flex fixed top-0 left-0 w-[260px] h-screen flex-col bg-white/80 backdrop-blur-xl z-50">
   <!-- Logo -->
   <div class="px-6 py-6">
     <div class="font-heading font-bold text-[22px] tracking-tight text-bazar-dark">
@@ -37,7 +37,7 @@
         href={link.href}
         class="flex items-center gap-3 px-3 py-2.5 rounded-bazar-sm text-[15px] font-medium transition-colors
           {isActive(link.href)
-            ? 'bg-bazar-dark text-white'
+            ? 'bg-bazar-yellow text-bazar-dark font-semibold'
             : 'text-bazar-gray-500 hover:bg-bazar-gray-100'}"
       >
         <span class="text-[18px]">{link.icon}</span>
@@ -47,7 +47,7 @@
   </div>
 
   <!-- User profile section -->
-  <div class="mt-auto px-4 py-4 border-t border-bazar-gray-100">
+  <div class="mt-auto px-4 py-4 bg-bazar-gray-100 rounded-t-bazar-lg">
     <div class="flex items-center gap-3">
       <div class="w-9 h-9 rounded-[9px] bg-gradient-to-br from-bazar-purple to-bazar-orange flex items-center justify-center text-white font-bold text-xs shrink-0">
         {profile?.full_name ? getInitials(profile.full_name) : '??'}
@@ -70,7 +70,7 @@
 </nav>
 
 <!-- Mobile bottom tab bar -->
-<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-bazar-gray-100 z-50 pb-[env(safe-area-inset-bottom)]">
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl z-50 pb-[env(safe-area-inset-bottom)]">
   <div class="flex items-center justify-around px-2 pt-2 pb-1">
     {#each links as link}
       <a

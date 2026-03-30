@@ -64,7 +64,10 @@
     </div>
 
     <div>
-      <label for="password" class="block text-sm font-medium mb-1.5">Parola</label>
+      <div class="flex items-center justify-between mb-1.5">
+        <label for="password" class="text-sm font-medium">Parola</label>
+        <a href="/forgot-password" class="text-xs text-bazar-gray-500 hover:text-bazar-dark transition-colors">Ai uitat parola?</a>
+      </div>
       <input
         id="password"
         type="password"

@@ -5,7 +5,7 @@
 </script>
 
 <!-- Mobile header -->
-<div class="flex items-center justify-between px-5 py-4 bg-white border-b-2 border-bazar-gray-100 sticky top-0 z-40 md:hidden">
+<div class="flex items-center justify-between px-5 py-4 bg-white/80 backdrop-blur-xl sticky top-0 z-40 md:hidden">
   <div class="font-heading font-bold text-[22px] tracking-tight text-bazar-dark">
     ba<span class="inline-block bg-bazar-yellow px-1 rounded-[4px] -rotate-2">zar</span>
   </div>

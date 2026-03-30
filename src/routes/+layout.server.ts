@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
-const publicRoutes = ['/login', '/register', '/verify-email'];
+const publicRoutes = ['/login', '/register', '/verify-email', '/forgot-password', '/reset-password'];
 
 export const load: LayoutServerLoad = async ({ locals, url }) => {
   const { session, user } = await locals.safeGetSession();
@@ -29,8 +29,8 @@ export const load: LayoutServerLoad = async ({ locals, url }) => {
       redirect(303, '/setup-profile');
     }
 
-    // Has profile, is on a public route — redirect to app
-    if (profile && isPublicRoute) {
+    // Has profile, is on a public route — redirect to app (except reset-password)
+    if (profile && isPublicRoute && !url.pathname.startsWith('/reset-password')) {
       redirect(303, '/checklist');
     }
 

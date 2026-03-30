@@ -36,33 +36,59 @@
 
 <a
 	href="/qa/{question.id}"
-	class="block bg-white rounded-bazar-md border-2 border-bazar-gray-100 hover:border-bazar-gray-300 hover:shadow-md transition-all p-4"
+	class="flex gap-3 bg-white rounded-bazar-xl hover:shadow-[0_8px_40px_rgba(44,47,48,0.06)] hover:-translate-y-0.5 transition-all p-4"
 >
-	<!-- Title -->
-	<h3 class="font-semibold text-bazar-dark mb-2">
-		{#if question.is_pinned}<span class="mr-1">📌</span>{/if}{question.title}
-	</h3>
-
-	<!-- Author + badges -->
-	<div class="flex items-center gap-2 flex-wrap mb-2">
-		{#if question.author}
-			<span class="text-sm text-bazar-dark">{question.author.full_name}</span>
-			{#if question.author.year}
-				<span class="text-xs font-medium px-2 py-0.5 rounded-bazar-pill {yearBadgeClass}">
-					Anul {question.author.year}
-				</span>
-			{/if}
-		{/if}
-		{#if question.faculty_id}
-			<span class="text-xs font-medium px-2 py-0.5 rounded-bazar-pill bg-bazar-purple/10 text-bazar-purple">
-				Facultate
-			</span>
-		{/if}
+	<!-- Vote column -->
+	<div class="flex flex-col items-center gap-0.5 shrink-0 pt-0.5">
+		<button
+			onclick={(e) => e.preventDefault()}
+			class="w-7 h-7 flex items-center justify-center rounded-lg text-bazar-gray-500 hover:bg-bazar-yellow/20 hover:text-bazar-dark transition-colors"
+			aria-label="Vot sus"
+		>
+			<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+			</svg>
+		</button>
+		<span class="text-xs font-bold text-bazar-dark">{answerCount}</span>
+		<button
+			onclick={(e) => e.preventDefault()}
+			class="w-7 h-7 flex items-center justify-center rounded-lg text-bazar-gray-500 hover:bg-bazar-gray-200 hover:text-bazar-dark transition-colors"
+			aria-label="Vot jos"
+		>
+			<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+			</svg>
+		</button>
 	</div>
 
-	<!-- Meta row -->
-	<div class="flex items-center gap-3">
-		<span class="text-sm text-bazar-gray-500">{answerCount} {answerCount === 1 ? 'raspuns' : 'raspunsuri'}</span>
-		<span class="text-xs text-bazar-gray-500">{relativeTime(question.created_at)}</span>
+	<!-- Content -->
+	<div class="min-w-0 flex-1">
+		<!-- Title -->
+		<h3 class="font-semibold text-bazar-dark mb-2 group-hover:text-bazar-yellow transition-colors">
+			{#if question.is_pinned}<span class="mr-1">📌</span>{/if}{question.title}
+		</h3>
+
+		<!-- Author + badges -->
+		<div class="flex items-center gap-2 flex-wrap mb-2">
+			{#if question.author}
+				<span class="text-sm text-bazar-dark">{question.author.full_name}</span>
+				{#if question.author.year}
+					<span class="text-xs font-medium px-2 py-0.5 rounded-bazar-pill {yearBadgeClass}">
+						Anul {question.author.year}
+					</span>
+				{/if}
+			{/if}
+			{#if question.faculty_id}
+				<span class="text-xs font-medium px-2 py-0.5 rounded-bazar-pill bg-bazar-purple/10 text-bazar-purple">
+					Facultate
+				</span>
+			{/if}
+		</div>
+
+		<!-- Meta row -->
+		<div class="flex items-center gap-3">
+			<span class="text-sm text-bazar-gray-500">{answerCount} {answerCount === 1 ? 'raspuns' : 'raspunsuri'}</span>
+			<span class="text-xs text-bazar-gray-500">{relativeTime(question.created_at)}</span>
+		</div>
 	</div>
 </a>
