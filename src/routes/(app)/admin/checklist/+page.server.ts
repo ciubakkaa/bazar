@@ -1,5 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
+import { moderateContent } from '$lib/moderation';
 
 export const load: PageServerLoad = async ({ locals, parent }) => {
 	const { profile } = await parent();
@@ -40,6 +41,9 @@ export const actions: Actions = {
 		if (!title?.trim()) return fail(400, { error: 'Titlul este obligatoriu.' });
 		if (!category?.trim()) return fail(400, { error: 'Categoria este obligatorie.' });
 
+		const moderation = moderateContent(title, description);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
+
 		const { error } = await locals.supabase.from('checklist_templates').insert({
 			title: title.trim(),
 			description: description?.trim() || null,
@@ -71,6 +75,9 @@ export const actions: Actions = {
 		if (!id) return fail(400, { error: 'ID lipsa.' });
 		if (!title?.trim()) return fail(400, { error: 'Titlul este obligatoriu.' });
 		if (!category?.trim()) return fail(400, { error: 'Categoria este obligatorie.' });
+
+		const moderation = moderateContent(title, description);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
 
 		const { error } = await locals.supabase
 			.from('checklist_templates')

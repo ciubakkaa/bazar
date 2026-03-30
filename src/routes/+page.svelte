@@ -122,7 +122,6 @@
         <h3 class="font-heading font-bold text-xl text-white mb-2">Comunitate</h3>
         <p class="text-sm text-white/60 leading-relaxed">Grupuri pe facultate. Cunoaste-ti colegii inainte sa inceapa cursurile.</p>
       </div>
-      <span class="inline-flex items-center gap-1 text-bazar-yellow font-semibold text-sm mt-4">Descopera &rarr;</span>
     </div>
   </div>
   <!-- Row 2: full-width yellow -->

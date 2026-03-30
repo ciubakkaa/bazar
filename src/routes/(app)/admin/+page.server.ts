@@ -1,5 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
+import { moderateContent } from '$lib/moderation';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { data: announcements } = await locals.supabase
@@ -23,6 +24,9 @@ export const actions: Actions = {
 
 		if (!title?.trim()) return fail(400, { error: 'Titlul este obligatoriu.' });
 		if (!body?.trim()) return fail(400, { error: 'Continutul este obligatoriu.' });
+
+		const moderation = moderateContent(title, body);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
 
 		const { error } = await locals.supabase.from('announcements').insert({
 			author_id: user.id,
@@ -48,6 +52,9 @@ export const actions: Actions = {
 		if (!id) return fail(400, { error: 'ID lipsa.' });
 		if (!title?.trim()) return fail(400, { error: 'Titlul este obligatoriu.' });
 		if (!body?.trim()) return fail(400, { error: 'Continutul este obligatoriu.' });
+
+		const moderation = moderateContent(title, body);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
 
 		const { error } = await locals.supabase
 			.from('announcements')

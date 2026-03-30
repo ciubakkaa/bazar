@@ -18,6 +18,7 @@
 	let messageText = $state('');
 	let messagesContainer: HTMLDivElement | undefined = $state();
 	let sending = $state(false);
+	let messageError = $state('');
 
 	// Build a lookup map for member names
 	const memberNames = $derived(
@@ -88,6 +89,14 @@
 	async function sendMessage() {
 		const text = messageText.trim();
 		if (!text || sending) return;
+
+		messageError = '';
+		const { moderateContent } = await import('$lib/moderation');
+		const moderation = moderateContent(text);
+		if (!moderation.allowed) {
+			messageError = moderation.reason ?? 'Continut inadecvat.';
+			return;
+		}
 
 		sending = true;
 		messageText = '';
@@ -177,6 +186,9 @@
 	<!-- Input area -->
 	<div class="shrink-0 bg-white border-t border-bazar-gray-100 px-4 py-3 sticky bottom-0 md:relative">
 		{#if data.isVerified}
+			{#if messageError}
+				<div class="px-3 py-2 mb-2 bg-red-50 rounded-bazar-sm text-sm text-red-700">{messageError}</div>
+			{/if}
 			<div class="flex items-end gap-2">
 				<textarea
 					bind:value={messageText}

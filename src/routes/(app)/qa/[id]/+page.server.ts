@@ -1,5 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
+import { moderateContent } from '$lib/moderation';
 
 export const load: PageServerLoad = async ({ locals, parent, params }) => {
 	const { user } = await parent();
@@ -12,7 +13,7 @@ export const load: PageServerLoad = async ({ locals, parent, params }) => {
 
 	const { data: answers } = await locals.supabase
 		.from('answers')
-		.select('*, author:profiles(full_name, year)')
+		.select('*, author:profiles!author_id(full_name, year, role)')
 		.eq('question_id', params.id)
 		.order('upvotes', { ascending: false });
 
@@ -37,6 +38,9 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const body = form.get('body') as string;
 		if (!body?.trim()) return fail(400, { error: 'Raspunsul nu poate fi gol.' });
+
+		const moderation = moderateContent(body);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
 
 		const { error } = await locals.supabase.from('answers').insert({
 			question_id: params.id,

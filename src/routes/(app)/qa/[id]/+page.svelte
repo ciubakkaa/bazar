@@ -41,6 +41,13 @@
 			: 'bg-bazar-gray-100 text-bazar-gray-700';
 	}
 
+	const elevatedRoles = ['class_lead', 'asmi', 'admin'];
+	const roleLabels: Record<string, string> = {
+		admin: 'Admin',
+		asmi: 'ASMI',
+		class_lead: 'Sef de serie',
+	};
+
 	async function toggleVote(answerId: string) {
 		if (!userId || !isVerified) return;
 
@@ -89,7 +96,7 @@
 		</a>
 
 		<!-- Question -->
-		<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-4 md:p-5 mb-6">
+		<div class="bg-white rounded-bazar-md p-4 md:p-5 mb-6">
 			<h1 class="text-xl font-heading font-bold text-bazar-dark mb-3 break-words">
 				{#if q.is_pinned}<span class="mr-1">📌</span>{/if}{q.title}
 			</h1>
@@ -129,11 +136,17 @@
 		{:else}
 			<div class="space-y-3 mb-8">
 				{#each data.answers as answer (answer.id)}
-					<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-4">
+					{@const isElevated = answer.author?.role && elevatedRoles.includes(answer.author.role)}
+					<div class="rounded-bazar-md p-4 {isElevated ? 'bg-bazar-yellow/10 ring-2 ring-bazar-yellow/40' : 'bg-white'}">
 						<!-- Author -->
-						<div class="flex items-center gap-2 mb-2">
+						<div class="flex items-center gap-2 mb-2 flex-wrap">
 							{#if answer.author}
 								<span class="text-sm font-medium text-bazar-dark">{answer.author.full_name}</span>
+								{#if isElevated}
+									<span class="text-xs font-semibold px-2 py-0.5 rounded-bazar-pill bg-bazar-yellow text-bazar-dark flex items-center gap-1">
+										✓ {roleLabels[answer.author.role] ?? answer.author.role}
+									</span>
+								{/if}
 								{#if answer.author.year}
 									<span class="text-xs font-medium px-2 py-0.5 rounded-bazar-pill {yearBadgeClass(answer.author.year)}">
 										Anul {answer.author.year}
@@ -166,7 +179,7 @@
 
 		<!-- Answer form -->
 		{#if isVerified}
-			<div class="bg-white rounded-bazar-md border-2 border-bazar-gray-100 p-5">
+			<div class="bg-white rounded-bazar-md p-5">
 				<h3 class="text-sm font-semibold text-bazar-dark mb-3">Raspunde</h3>
 
 				{#if form?.error}

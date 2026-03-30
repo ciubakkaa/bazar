@@ -1,5 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import { redirect, fail } from '@sveltejs/kit';
+import { moderateContent } from '$lib/moderation';
 
 export const load: PageServerLoad = async ({ parent }) => {
 	const { profile } = await parent();
@@ -20,6 +21,9 @@ export const actions: Actions = {
 		const facultyId = form.get('faculty_id') as string;
 
 		if (!title?.trim()) return fail(400, { error: 'Titlul este obligatoriu.' });
+
+		const moderation = moderateContent(title, body);
+		if (!moderation.allowed) return fail(400, { error: moderation.reason });
 
 		const { data: question, error } = await locals.supabase
 			.from('questions')
