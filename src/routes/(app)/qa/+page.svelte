@@ -13,6 +13,26 @@
 
 	let expandedFaq = $state<number | null>(null);
 
+	function relativeTime(dateStr: string | null): string {
+		if (!dateStr) return '';
+		const now = Date.now();
+		const then = new Date(dateStr).getTime();
+		const diffMs = now - then;
+		const diffH = Math.floor(diffMs / (1000 * 60 * 60));
+		const diffD = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+		if (diffH < 1) return 'acum';
+		if (diffH < 24) return `acum ${diffH}h`;
+		if (diffD < 7) return `acum ${diffD}z`;
+		return new Date(dateStr).toLocaleDateString('ro-RO', { day: 'numeric', month: 'short' });
+	}
+
+	const roleLabels: Record<string, string> = {
+		admin: 'Admin',
+		asmi: 'ASMI',
+		class_lead: 'Sef de serie',
+		student: 'Student',
+	};
+
 	const faqs = [
 		{
 			question: 'Unde e cantina si cat costa?',
@@ -111,64 +131,40 @@
 
 	<!-- ANUNTURI TAB -->
 	{#if activeSection === 'anunturi'}
-		<div class="space-y-4">
-			<!-- Placeholder announcement cards -->
-			<div class="bg-white rounded-bazar-xl p-5">
-				<div class="flex items-center gap-2 mb-3">
-					<div class="w-8 h-8 rounded-full bg-bazar-purple/10 flex items-center justify-center text-sm">📢</div>
-					<div>
-						<span class="text-sm font-semibold text-bazar-dark">Secretariat FMI</span>
-						<span class="text-xs text-bazar-gray-500 ml-2">acum 2z</span>
-					</div>
-				</div>
-				<h3 class="font-semibold text-bazar-dark mb-1">Inscrierile pentru camin sunt deschise</h3>
-				<p class="text-sm text-bazar-gray-500 leading-relaxed">
-					Cererile pentru locuri in camin se pot depune pana pe 15 septembrie. Accesati portalul universitatii si completati formularul online. Rezultatele vor fi afisate in 2 saptamani.
-				</p>
-				<div class="flex items-center gap-2 mt-3">
-					<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-50 text-green-700">Cazare</span>
-					<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700">Important</span>
-				</div>
+		{#if data.announcements.length === 0}
+			<div class="text-center py-12 text-bazar-gray-500">
+				<p class="text-lg mb-1">Niciun anunt inca</p>
+				<p class="text-sm">Anunturile vor fi postate de sefii de serie, ASMI si reprezentantii facultatii.</p>
 			</div>
-
-			<div class="bg-white rounded-bazar-xl p-5">
-				<div class="flex items-center gap-2 mb-3">
-					<div class="w-8 h-8 rounded-full bg-bazar-yellow/20 flex items-center justify-center text-sm">🎓</div>
-					<div>
-						<span class="text-sm font-semibold text-bazar-dark">ASMI</span>
-						<span class="text-xs text-bazar-gray-500 ml-2">acum 5z</span>
+		{:else}
+			<div class="space-y-4">
+				{#each data.announcements as announcement (announcement.id)}
+					<div class="bg-white rounded-bazar-xl p-5 {announcement.is_pinned ? 'ring-2 ring-bazar-yellow' : ''}">
+						<div class="flex items-center gap-2 mb-3">
+							<div class="w-8 h-8 rounded-full bg-bazar-purple/10 flex items-center justify-center text-sm">📢</div>
+							<div>
+								<span class="text-sm font-semibold text-bazar-dark">{announcement.author?.full_name ?? 'Anonim'}</span>
+								{#if announcement.author?.role && announcement.author.role !== 'student'}
+									<span class="text-xs font-medium px-1.5 py-0.5 rounded-full bg-bazar-purple/10 text-bazar-purple ml-1">
+										{roleLabels[announcement.author.role] ?? announcement.author.role}
+									</span>
+								{/if}
+								<span class="text-xs text-bazar-gray-500 ml-2">{relativeTime(announcement.created_at)}</span>
+							</div>
+						</div>
+						<h3 class="font-semibold text-bazar-dark mb-1">
+							{#if announcement.is_pinned}<span class="mr-1">📌</span>{/if}{announcement.title}
+						</h3>
+						<p class="text-sm text-bazar-gray-500 leading-relaxed">{announcement.body}</p>
+						{#if announcement.category}
+							<div class="flex items-center gap-2 mt-3">
+								<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-bazar-gray-100 text-bazar-gray-700">{announcement.category}</span>
+							</div>
+						{/if}
 					</div>
-				</div>
-				<h3 class="font-semibold text-bazar-dark mb-1">Bun venit, boboci! Iata ce trebuie sa stiti</h3>
-				<p class="text-sm text-bazar-gray-500 leading-relaxed">
-					Felicitari ca ati fost admisi! Am pregatit un scurt ghid cu tot ce trebuie sa stiti in prima saptamana. Ne vedem la evenimentul de bun venit pe 1 octombrie in amfiteatrul principal.
-				</p>
-				<div class="flex items-center gap-2 mt-3">
-					<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700">Eveniment</span>
-				</div>
+				{/each}
 			</div>
-
-			<div class="bg-white rounded-bazar-xl p-5">
-				<div class="flex items-center gap-2 mb-3">
-					<div class="w-8 h-8 rounded-full bg-bazar-coral/20 flex items-center justify-center text-sm">🚌</div>
-					<div>
-						<span class="text-sm font-semibold text-bazar-dark">Sef de serie Anul 1</span>
-						<span class="text-xs text-bazar-gray-500 ml-2">acum 1sapt</span>
-					</div>
-				</div>
-				<h3 class="font-semibold text-bazar-dark mb-1">Abonamente STB cu reducere de 50%</h3>
-				<p class="text-sm text-bazar-gray-500 leading-relaxed">
-					Puteti face abonamentul redus cu legitimatia de student vizata. Ghiseurile STB din statiile de metrou sunt cele mai rapide. Aveti nevoie de legitimatie + buletin.
-				</p>
-				<div class="flex items-center gap-2 mt-3">
-					<span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Transport</span>
-				</div>
-			</div>
-
-			<p class="text-center text-xs text-bazar-gray-500 pt-2">
-				Anunturile vor fi postate de sefii de serie, ASMI si reprezentantii facultatii.
-			</p>
-		</div>
+		{/if}
 
 	<!-- INTREBARI TAB -->
 	{:else if activeSection === 'intrebari'}

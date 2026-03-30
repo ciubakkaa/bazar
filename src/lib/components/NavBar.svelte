@@ -2,7 +2,11 @@
   import { page } from '$app/state';
   import type { Profile } from '$lib/types';
 
-  let { profile }: { profile: Profile & { faculty?: { short_name: string } | null } } = $props();
+  let { profile }: { profile: Profile & { faculty?: { short_name: string } | null; role?: string } } = $props();
+
+  const isElevated = $derived(
+    profile?.role && ['class_lead', 'asmi', 'admin'].includes(profile.role)
+  );
 
   const links = [
     { href: '/checklist', label: 'Checklist', icon: '📋' },
@@ -45,6 +49,22 @@
       </a>
     {/each}
   </div>
+
+  <!-- Admin link -->
+  {#if isElevated}
+    <div class="px-3 mt-4">
+      <a
+        href="/admin"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-bazar-sm text-[15px] font-medium transition-colors
+          {isActive('/admin')
+            ? 'bg-bazar-purple text-white font-semibold'
+            : 'text-bazar-purple hover:bg-bazar-purple/10'}"
+      >
+        <span class="text-[18px]">⚙️</span>
+        Admin
+      </a>
+    </div>
+  {/if}
 
   <!-- User profile section -->
   <div class="mt-auto px-4 py-4 bg-bazar-gray-100 rounded-t-bazar-lg">
