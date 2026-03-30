@@ -44,6 +44,47 @@ export type Database = {
           },
         ]
       }
+      announcements: {
+        Row: {
+          author_id: string | null
+          body: string
+          category: string | null
+          created_at: string
+          id: string
+          is_pinned: boolean
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          body: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          is_pinned?: boolean
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          body?: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          is_pinned?: boolean
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "announcements_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       answers: {
         Row: {
           author_id: string | null
@@ -355,6 +396,7 @@ export type Database = {
           invite_code_id: string | null
           is_active: boolean | null
           is_verified: boolean | null
+          role: string | null
           university_email: string | null
           updated_at: string | null
           year: number | null
@@ -370,6 +412,7 @@ export type Database = {
           invite_code_id?: string | null
           is_active?: boolean | null
           is_verified?: boolean | null
+          role?: string | null
           university_email?: string | null
           updated_at?: string | null
           year?: number | null
@@ -385,6 +428,7 @@ export type Database = {
           invite_code_id?: string | null
           is_active?: boolean | null
           is_verified?: boolean | null
+          role?: string | null
           university_email?: string | null
           updated_at?: string | null
           year?: number | null
