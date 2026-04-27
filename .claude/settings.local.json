@@ -29,7 +29,18 @@
       "mcp__claude_ai_Supabase__get_edge_function",
       "mcp__claude_ai_Supabase__get_logs",
       "mcp__claude_ai_Supabase__execute_sql",
-      "mcp__claude_ai_Supabase__apply_migration"
+      "mcp__claude_ai_Supabase__apply_migration",
+      "Bash(mkdir -p /Users/vladciobotarasu/Claudy/Products/Bazar)",
+      "Bash(mv \"/Users/vladciobotarasu/Claudy/Products/Bazar - Content Moderation.md\" \"/Users/vladciobotarasu/Claudy/Products/Bazar/Content Moderation.md\")",
+      "Bash(mv \"/Users/vladciobotarasu/Claudy/Products/Bazar - Conversation with Vlad Andries.md\" \"/Users/vladciobotarasu/Claudy/Products/Bazar/Conversation with Vlad Andries.md\")",
+      "Bash(awk 'NR>=613 && NR<=720 {print NR\": \"$0}' /Users/vladciobotarasu/projects/personal/bazar/src/lib/database.types.ts)",
+      "mcp__plugin_supabase_supabase__apply_migration",
+      "Bash(LAUNCH_MODE=prelaunch PRELAUNCH_BYPASS_TOKEN=devtoken123 IP_HASH_SECRET=devsecret npm run dev)",
+      "Bash(echo \"PID=$!\")",
+      "Bash(curl -s -o /tmp/page.html -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"/login → %{http_code} %{redirect_url}\\\\n\" http://localhost:5173/login)",
+      "Bash(curl -s -o /dev/null -w \"/__admin?token=devtoken123 → %{http_code}\\\\n\" \"http://localhost:5173/__admin?token=devtoken123\")",
+      "Bash(pkill -f \"vite dev\")"
     ]
   },
   "enabledPlugins": {}

@@ -31,7 +31,7 @@ const supabaseHandle: Handle = async ({ event, resolve }) => {
 };
 
 const prelaunchHandle: Handle = async ({ event, resolve }) => {
-	const mode = env.PUBLIC_LAUNCH_MODE ?? 'prelaunch';
+	const mode = env.LAUNCH_MODE ?? 'prelaunch';
 	if (mode !== 'prelaunch') return resolve(event);
 
 	const path = event.url.pathname;
