@@ -651,6 +651,45 @@ export type Database = {
           },
         ]
       }
+      waitlist_signups: {
+        Row: {
+          id: string
+          email: string
+          university: string
+          faculty: string | null
+          year_of_study: string
+          feedback: string | null
+          locale: string
+          user_agent: string | null
+          ip_hash: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          university: string
+          faculty?: string | null
+          year_of_study: string
+          feedback?: string | null
+          locale?: string
+          user_agent?: string | null
+          ip_hash?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          university?: string
+          faculty?: string | null
+          year_of_study?: string
+          feedback?: string | null
+          locale?: string
+          user_agent?: string | null
+          ip_hash?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
