@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from '$lib/supabase-server';
 import { isPublicPath } from '$lib/server/prelaunch-gate';
 import { verifyBypassCookie, BYPASS_COOKIE_NAME } from '$lib/server/prelaunch';
+import { paraglideMiddleware } from '$lib/paraglide/server';
 import { env } from '$env/dynamic/private';
 import { sequence } from '@sveltejs/kit/hooks';
 import { redirect, type Handle } from '@sveltejs/kit';
@@ -46,4 +47,12 @@ const prelaunchHandle: Handle = async ({ event, resolve }) => {
 	throw redirect(302, '/');
 };
 
-export const handle = sequence(prelaunchHandle, supabaseHandle);
+const paraglideHandle: Handle = ({ event, resolve }) =>
+	paraglideMiddleware(event.request, ({ request, locale }) => {
+		event.request = request;
+		return resolve(event, {
+			transformPageChunk: ({ html }) => html.replace('%paraglide.lang%', locale)
+		});
+	});
+
+export const handle = sequence(prelaunchHandle, paraglideHandle, supabaseHandle);

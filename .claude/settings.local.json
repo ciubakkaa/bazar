@@ -40,7 +40,11 @@
       "Bash(curl -s -o /tmp/page.html -w \"%{http_code}\\\\n\" http://localhost:5173/)",
       "Bash(curl -s -o /dev/null -w \"/login → %{http_code} %{redirect_url}\\\\n\" http://localhost:5173/login)",
       "Bash(curl -s -o /dev/null -w \"/__admin?token=devtoken123 → %{http_code}\\\\n\" \"http://localhost:5173/__admin?token=devtoken123\")",
-      "Bash(pkill -f \"vite dev\")"
+      "Bash(pkill -f \"vite dev\")",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(LAUNCH_MODE=prelaunch npm run dev)",
+      "Bash(echo \"PID=$!\" sleep 6 curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/ ls /Users/vladciobotarasu/projects/personal/bazar/src/lib/paraglide)"
     ]
   },
   "enabledPlugins": {}
