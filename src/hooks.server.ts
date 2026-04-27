@@ -1,7 +1,11 @@
 import { createServerSupabaseClient } from '$lib/supabase-server';
-import type { Handle } from '@sveltejs/kit';
+import { isPublicPath } from '$lib/server/prelaunch-gate';
+import { verifyBypassCookie, BYPASS_COOKIE_NAME } from '$lib/server/prelaunch';
+import { env } from '$env/dynamic/private';
+import { sequence } from '@sveltejs/kit/hooks';
+import { redirect, type Handle } from '@sveltejs/kit';
 
-export const handle: Handle = async ({ event, resolve }) => {
+const supabaseHandle: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = createServerSupabaseClient(event.cookies);
 
 	event.locals.safeGetSession = async () => {
@@ -25,3 +29,21 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	});
 };
+
+const prelaunchHandle: Handle = async ({ event, resolve }) => {
+	const mode = env.PUBLIC_LAUNCH_MODE ?? 'prelaunch';
+	if (mode !== 'prelaunch') return resolve(event);
+
+	const path = event.url.pathname;
+	if (isPublicPath(path)) return resolve(event);
+
+	const secret = env.PRELAUNCH_BYPASS_TOKEN;
+	if (secret) {
+		const cookie = event.cookies.get(BYPASS_COOKIE_NAME);
+		if (await verifyBypassCookie(secret, cookie)) return resolve(event);
+	}
+
+	throw redirect(302, '/');
+};
+
+export const handle = sequence(prelaunchHandle, supabaseHandle);
