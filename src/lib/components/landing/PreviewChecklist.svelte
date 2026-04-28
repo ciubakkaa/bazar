@@ -1,12 +1,14 @@
 <script lang="ts">
-	const items = [
-		{ label: 'Confirma locul la facultate', tag: 'Acte', tagClass: 'bg-blue-100 text-blue-800', done: true },
-		{ label: 'Depune cererea pentru camin', tag: 'Cazare', tagClass: 'bg-green-100 text-green-800', done: true },
-		{ label: 'Plateste taxa de inmatriculare', tag: 'Acte', tagClass: 'bg-blue-100 text-blue-800', done: true },
-		{ label: 'Fa-ti adeverinta medicala', tag: 'Acte', tagClass: 'bg-blue-100 text-blue-800', done: false },
-		{ label: 'Cauta un coleg de apartament', tag: 'Cazare', tagClass: 'bg-green-100 text-green-800', done: false },
-		{ label: 'Inscrie-te in grupul facultatii', tag: 'Comunitate', tagClass: 'bg-purple-100 text-purple-800', done: false }
-	];
+	import * as m from '$lib/paraglide/messages.js';
+
+	const items = $derived([
+		{ label: m.preview_checklist_item1(), tag: m.tag_acte(), tagClass: 'bg-blue-100 text-blue-800', done: true },
+		{ label: m.preview_checklist_item2(), tag: m.tag_cazare(), tagClass: 'bg-green-100 text-green-800', done: true },
+		{ label: m.preview_checklist_item3(), tag: m.tag_acte(), tagClass: 'bg-blue-100 text-blue-800', done: true },
+		{ label: m.preview_checklist_item4(), tag: m.tag_acte(), tagClass: 'bg-blue-100 text-blue-800', done: false },
+		{ label: m.preview_checklist_item5(), tag: m.tag_cazare(), tagClass: 'bg-green-100 text-green-800', done: false },
+		{ label: m.preview_checklist_item6(), tag: m.tag_comunitate(), tagClass: 'bg-purple-100 text-purple-800', done: false }
+	]);
 </script>
 
 <div
@@ -14,8 +16,8 @@
 >
 	<div class="flex items-center justify-between mb-4">
 		<div>
-			<div class="font-heading font-bold text-lg">Checklist-ul tau</div>
-			<div class="text-[12px] text-bazar-gray-500">3 din 10 completate</div>
+			<div class="font-heading font-bold text-lg">{m.preview_checklist_title()}</div>
+			<div class="text-[12px] text-bazar-gray-500">{m.preview_checklist_progress()}</div>
 		</div>
 		<div class="text-2xl">📋</div>
 	</div>

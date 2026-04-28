@@ -1,24 +1,26 @@
 <script lang="ts">
-	const items = [
+	import * as m from '$lib/paraglide/messages.js';
+
+	const items = $derived([
 		{
-			q: 'Cat dureaza sa primesti loc in camin?',
-			a: 'In medie 2-3 saptamani dupa ce depui cererea. La UPB e mai rapid.',
-			author: 'Maria, anul 3',
+			q: m.preview_qa_q1(),
+			a: m.preview_qa_a1(),
+			author: m.preview_qa_author1(),
 			verified: true
 		},
 		{
-			q: 'Ce acte iti trebuie pentru bursa sociala?',
-			a: 'Adeverinta de venit, copie CI, dosar... lasa-ma sa-ti scriu lista completa.',
-			author: 'Andrei, ASMI',
+			q: m.preview_qa_q2(),
+			a: m.preview_qa_a2(),
+			author: m.preview_qa_author2(),
 			verified: true
 		},
 		{
-			q: 'E ok daca nu stiu inca ce specializare aleg?',
+			q: m.preview_qa_q3(),
 			a: '',
 			author: '',
 			verified: false
 		}
-	];
+	]);
 </script>
 
 <div
@@ -26,8 +28,8 @@
 >
 	<div class="flex items-center justify-between mb-4">
 		<div>
-			<div class="font-heading font-bold text-lg">Intrebari & Raspunsuri</div>
-			<div class="text-[12px] text-bazar-gray-500">Studentii din anii mari raspund</div>
+			<div class="font-heading font-bold text-lg">{m.preview_qa_title()}</div>
+			<div class="text-[12px] text-bazar-gray-500">{m.preview_qa_subtitle()}</div>
 		</div>
 		<div class="text-2xl">❓</div>
 	</div>
@@ -46,13 +48,13 @@
 						<span class="font-semibold">{item.author}</span>
 						{#if item.verified}
 							<span class="px-1.5 py-0.5 bg-bazar-yellow rounded-full text-bazar-dark font-bold">
-								verificat
+								{m.preview_qa_verified()}
 							</span>
 						{/if}
 					</div>
 				</div>
 			{:else}
-				<div class="text-[12px] text-bazar-gray-500 italic mt-1">Astepta raspuns...</div>
+				<div class="text-[12px] text-bazar-gray-500 italic mt-1">{m.preview_qa_pending()}</div>
 			{/if}
 		</div>
 	{/each}

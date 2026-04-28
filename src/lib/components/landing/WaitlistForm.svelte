@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import * as m from '$lib/paraglide/messages.js';
 	import UniversityCombobox from './UniversityCombobox.svelte';
 
 	type Props = {
@@ -17,15 +18,15 @@
 	let showFeedback = $state(false);
 	let submitting = $state(false);
 
-	const years = [
-		{ value: 'pre_uni', label: 'Pre-universitar / liceu' },
-		{ value: '1', label: 'Anul 1' },
-		{ value: '2', label: 'Anul 2' },
-		{ value: '3', label: 'Anul 3' },
-		{ value: '4', label: 'Anul 4' },
-		{ value: '5', label: 'Anul 5' },
-		{ value: '6', label: 'Anul 6' }
-	];
+	const years = $derived([
+		{ value: 'pre_uni', label: m.waitlist_year_pre_uni() },
+		{ value: '1', label: m.waitlist_year_1() },
+		{ value: '2', label: m.waitlist_year_2() },
+		{ value: '3', label: m.waitlist_year_3() },
+		{ value: '4', label: m.waitlist_year_4() },
+		{ value: '5', label: m.waitlist_year_5() },
+		{ value: '6', label: m.waitlist_year_6() }
+	]);
 </script>
 
 <section id="waitlist" class="max-w-[640px] mx-auto px-5 md:px-8 mt-16 md:mt-20">
@@ -33,17 +34,19 @@
 		{#if form?.success}
 			<div class="text-center py-6">
 				<div class="text-5xl mb-3">📬</div>
-				<h2 class="font-heading font-bold text-2xl md:text-3xl mb-2">Te-am adaugat!</h2>
+				<h2 class="font-heading font-bold text-2xl md:text-3xl mb-2">
+					{m.waitlist_success_title()}
+				</h2>
 				<p class="text-bazar-gray-700">
-					Iti scriem la <span class="font-semibold">{form.email}</span> cand lansam Bazar.
+					{m.waitlist_success_body({ email: form.email ?? '' })}
 				</p>
 			</div>
 		{:else}
 			<div class="mb-6">
 				<h2 class="font-heading font-bold text-2xl md:text-3xl mb-2">
-					Anunta-ma cand iese Bazar.
+					{m.waitlist_heading()}
 				</h2>
-				<p class="text-bazar-gray-700">Iti scriem o singura data, cand lansam. Fara spam.</p>
+				<p class="text-bazar-gray-700">{m.waitlist_subtitle()}</p>
 			</div>
 
 			<form
@@ -68,28 +71,36 @@
 				/>
 
 				<div>
-					<label class="block text-sm font-semibold mb-1.5" for="email">Email</label>
+					<label class="block text-sm font-semibold mb-1.5" for="email">
+						{m.waitlist_email_label()}
+					</label>
 					<input
 						id="email"
 						name="email"
 						type="email"
 						required
-						placeholder="numele.tau@email.com"
+						placeholder={m.waitlist_email_placeholder()}
 						class="w-full px-4 py-3 rounded-bazar-sm border border-bazar-gray-200 bg-white text-[15px] focus:outline-none focus:border-bazar-dark transition-colors"
 						value={form?.fields?.email ?? ''}
 					/>
 				</div>
 
 				<div>
-					<label class="block text-sm font-semibold mb-1.5" for="university-input">
-						Universitate / facultate
-					</label>
-					<UniversityCombobox bind:university bind:faculty />
+					<div class="block text-sm font-semibold mb-1.5">
+						{m.waitlist_university_label()}
+					</div>
+					<UniversityCombobox
+						bind:university
+						bind:faculty
+						placeholder={m.waitlist_university_placeholder()}
+						altaPlaceholder={m.waitlist_alta_placeholder()}
+						altaOptionLabel={m.waitlist_alta_option()}
+					/>
 				</div>
 
 				<div>
 					<label class="block text-sm font-semibold mb-1.5" for="year_of_study">
-						Anul de studiu
+						{m.waitlist_year_label()}
 					</label>
 					<select
 						id="year_of_study"
@@ -97,7 +108,7 @@
 						required
 						class="w-full px-4 py-3 rounded-bazar-sm border border-bazar-gray-200 bg-white text-[15px] focus:outline-none focus:border-bazar-dark transition-colors"
 					>
-						<option value="">Alege anul</option>
+						<option value="">{m.waitlist_year_placeholder()}</option>
 						{#each years as y}
 							<option value={y.value} selected={form?.fields?.year_of_study === y.value}>
 								{y.label}
@@ -113,21 +124,21 @@
 						class="mt-1 w-4 h-4 accent-bazar-dark"
 					/>
 					<span class="text-sm text-bazar-gray-700">
-						Vreau sa ajut sa-l facem mai bun
+						{m.waitlist_feedback_checkbox()}
 					</span>
 				</label>
 
 				{#if showFeedback}
 					<div>
 						<label class="block text-sm font-semibold mb-1.5" for="feedback">
-							Care e partea cea mai haotica din inceputul facultatii?
+							{m.waitlist_feedback_label()}
 						</label>
 						<textarea
 							id="feedback"
 							name="feedback"
 							rows="4"
 							maxlength="1000"
-							placeholder="Spune-ne orice te frustreaza, te confuzeaza, sau iti ia prea mult timp..."
+							placeholder={m.waitlist_feedback_placeholder()}
 							class="w-full px-4 py-3 rounded-bazar-sm border border-bazar-gray-200 bg-white text-[15px] focus:outline-none focus:border-bazar-dark transition-colors resize-none"
 						></textarea>
 					</div>
@@ -146,7 +157,7 @@
 					disabled={submitting}
 					class="mt-2 inline-flex items-center justify-center gap-2 bg-gradient-to-br from-bazar-yellow to-bazar-yellow-dim text-bazar-dark px-8 py-3.5 rounded-full font-bold text-base hover:-translate-y-0.5 hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
 				>
-					{submitting ? 'Se trimite...' : 'Trimite →'}
+					{submitting ? m.waitlist_submitting() : m.waitlist_submit() + ' →'}
 				</button>
 			</form>
 		{/if}
