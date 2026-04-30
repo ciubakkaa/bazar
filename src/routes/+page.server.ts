@@ -97,7 +97,14 @@ async function sendSignupPing(v: {
 	const apiKey = env.RESEND_API_KEY;
 	const to = env.WAITLIST_NOTIFY_EMAIL;
 	const from = env.WAITLIST_NOTIFY_FROM ?? 'Bazar <bazar@hicode.ro>';
-	if (!apiKey || !to) return;
+	if (!apiKey) {
+		console.log('resend ping skipped: RESEND_API_KEY not set');
+		return;
+	}
+	if (!to) {
+		console.log('resend ping skipped: WAITLIST_NOTIFY_EMAIL not set');
+		return;
+	}
 
 	const lines = [
 		`Email: ${v.email}`,
