@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ parent }) => {
 };
 
 export const actions: Actions = {
-	waitlist: async ({ request, locals, getClientAddress, cookies }) => {
+	waitlist: async ({ request, locals, getClientAddress, cookies, platform }) => {
 		try {
 			const fd = await request.formData();
 			const raw: Record<string, string> = {};
@@ -76,7 +76,17 @@ export const actions: Actions = {
 			}
 
 			if (!error) {
-				void sendSignupPing(v).catch((err) => console.error('resend ping failed', err));
+				const pingPromise = sendSignupPing(v).catch((err) =>
+					console.error('resend ping failed', err)
+				);
+				// On Cloudflare, fire-and-forget promises get killed when the worker
+				// returns. waitUntil keeps the worker alive until the ping completes.
+				const ctx = platform?.context;
+				if (ctx && typeof ctx.waitUntil === 'function') {
+					ctx.waitUntil(pingPromise);
+				} else {
+					void pingPromise;
+				}
 			}
 
 			return { success: true, email: v.email };
@@ -128,6 +138,6 @@ async function sendSignupPing(v: {
 		})
 	});
 	if (!res.ok) {
-		console.error('resend non-200', await res.text());
+		console.error('resend non-200', res.status, (await res.text()).slice(0, 500));
 	}
 }

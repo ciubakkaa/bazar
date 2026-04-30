@@ -13,6 +13,11 @@ declare global {
 			user: User | null;
 			profile: Profile | null;
 		}
+		interface Platform {
+			context?: {
+				waitUntil(promise: Promise<unknown>): void;
+			};
+		}
 	}
 }
 
