@@ -72,7 +72,9 @@ export const actions: Actions = {
 
 			if (error && error.code !== '23505') {
 				console.error('waitlist insert failed', JSON.stringify(error));
-				return fail(500, { error: 'Ceva nu a mers. Incearca din nou.' });
+				return fail(500, {
+					error: `DEBUG insert: ${error.code ?? '?'} ${error.message ?? ''} ${error.details ?? ''}`.slice(0, 500)
+				});
 			}
 
 			if (!error) {
@@ -82,7 +84,8 @@ export const actions: Actions = {
 			return { success: true, email: v.email };
 		} catch (err) {
 			console.error('waitlist action threw', err instanceof Error ? err.stack : err);
-			return fail(500, { error: 'Ceva nu a mers. Incearca din nou.' });
+			const msg = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+			return fail(500, { error: `DEBUG threw: ${msg}`.slice(0, 500) });
 		}
 	}
 };
