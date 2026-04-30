@@ -84,7 +84,7 @@ async function sendSignupPing(v: {
 }) {
 	const apiKey = env.RESEND_API_KEY;
 	const to = env.WAITLIST_NOTIFY_EMAIL;
-	const from = env.WAITLIST_NOTIFY_FROM ?? 'Bazar <onboarding@thebazar.ro>';
+	const from = env.WAITLIST_NOTIFY_FROM ?? 'Bazar <bazar@hicode.ro>';
 	if (!apiKey || !to) return;
 
 	const lines = [
