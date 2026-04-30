@@ -59,12 +59,7 @@
 	"preview_qa_pending": "Waiting for an answer...",
 	"preview_qa_verified": "verified",
 
-	"social_proof_heading": "Building first for students from:",
-	"social_proof_upb": "UPB — Politehnica",
-	"social_proof_ase": "ASE",
-	"social_proof_ub": "University of Bucharest",
-
-	"waitlist_heading": "Tell me when Bazar launches.",
+"waitlist_heading": "Tell me when Bazar launches.",
 	"waitlist_subtitle": "We email you exactly once — at launch. No spam.",
 	"waitlist_email_label": "Email",
 	"waitlist_email_placeholder": "your.name@email.com",

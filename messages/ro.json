@@ -59,12 +59,7 @@
 	"preview_qa_pending": "Astepta raspuns...",
 	"preview_qa_verified": "verificat",
 
-	"social_proof_heading": "Construim primul pentru studentii de la:",
-	"social_proof_upb": "UPB — Politehnica",
-	"social_proof_ase": "ASE",
-	"social_proof_ub": "Universitatea din Bucuresti",
-
-	"waitlist_heading": "Anunta-ma cand iese Bazar.",
+"waitlist_heading": "Anunta-ma cand iese Bazar.",
 	"waitlist_subtitle": "Iti scriem o singura data, cand lansam. Fara spam.",
 	"waitlist_email_label": "Email",
 	"waitlist_email_placeholder": "numele.tau@email.com",

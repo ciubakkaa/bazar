@@ -216,28 +216,6 @@
 	</div>
 </section>
 
-<!-- Social proof -->
-<section class="max-w-[1200px] mx-auto px-5 md:px-8 mt-16 text-center">
-	<p class="text-sm text-bazar-gray-500 font-medium mb-5">{m.social_proof_heading()}</p>
-	<div class="flex justify-center gap-4 md:gap-8 flex-wrap">
-		<div
-			class="flex items-center gap-2 px-5 py-3 bg-white rounded-full font-semibold text-[15px] text-bazar-gray-700"
-		>
-			<span class="w-2.5 h-2.5 rounded-full bg-bazar-green"></span> {m.social_proof_upb()}
-		</div>
-		<div
-			class="flex items-center gap-2 px-5 py-3 bg-white rounded-full font-semibold text-[15px] text-bazar-gray-700"
-		>
-			<span class="w-2.5 h-2.5 rounded-full bg-bazar-green"></span> {m.social_proof_ase()}
-		</div>
-		<div
-			class="flex items-center gap-2 px-5 py-3 bg-white rounded-full font-semibold text-[15px] text-bazar-gray-700"
-		>
-			<span class="w-2.5 h-2.5 rounded-full bg-bazar-green"></span> {m.social_proof_ub()}
-		</div>
-	</div>
-</section>
-
 <!-- Waitlist form -->
 <WaitlistForm {form} />
 
